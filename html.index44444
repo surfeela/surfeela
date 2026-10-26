@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SURFEELA - Premium cleaning essentials.">
+  <meta name="theme-color" content="#087a50">
+  <title>SURFEELA · Cleaner Home, Brighter Life</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-900:#043a28; --brand-800:#064b35; --brand-700:#087a50; --brand-600:#0a9a63;
+      --brand-100:#e9f7ef; --brand-50:#f0fbf5;
+      --accent-500:#c8f169; --accent-600:#b8e055;
+      --ink-900:#0f1f18; --ink-800:#172b24; --ink-700:#2a3f36; --ink-600:#42554b;
+      --ink-500:#56675e; --ink-400:#6d7b74; --ink-300:#99a8a0; --ink-200:#c9d4ce;
+      --ink-100:#e3ebe6; --ink-50:#f7faf7; --white:#fff;
+      --success:#16724b; --success-bg:#eaf7ee;
+      --warning:#94630d; --warning-bg:#fff4dc;
+      --info:#2c67aa; --info-bg:#e9f2ff;
+      --danger:#c44545; --danger-bg:#ffeded;
+      --purple:#7352b7; --purple-bg:#f0eaff;
+      --font-sans:'Inter',ui-sans-serif,system-ui,sans-serif;
+      --fs-xs:.6875rem; --fs-sm:.8125rem; --fs-base:.875rem; --fs-md:1rem;
+      --fs-lg:1.125rem; --fs-xl:1.5rem; --fs-2xl:1.75rem;
+      --lh-tight:1.2; --lh-base:1.6;
+      --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px;
+      --sp-8:32px; --sp-10:40px; --sp-12:48px;
+      --r-xs:6px; --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:20px; --r-2xl:28px; --r-pill:999px;
+      --shadow-xs:0 1px 2px rgba(15,31,24,.04); --shadow-sm:0 2px 8px rgba(15,31,24,.05);
+      --shadow-md:0 8px 24px rgba(15,31,24,.07); --shadow-lg:0 16px 40px rgba(15,31,24,.10);
+      --shadow-xl:0 24px 60px rgba(15,31,24,.14);
+      --ease-out:cubic-bezier(.16,1,.3,1);
+      --dur-fast:150ms; --dur-base:250ms;
+      --container-max:1240px; --container-pad:24px; --header-h:72px; --sidebar-w:240px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:var(--font-sans);font-size:var(--fs-base);line-height:var(--lh-base);
+      color:var(--ink-800);background:var(--ink-50);-webkit-font-smoothing:antialiased;min-height:100vh}
+    img,svg{display:block;max-width:100%}
+    input,button,textarea,select{font:inherit;color:inherit}
+    button{cursor:pointer;border:none;background:none}
+    a{color:inherit;text-decoration:none}
+    table{border-collapse:collapse;width:100%}
+    h1,h2,h3,h4,h5,h6{line-height:var(--lh-tight);font-weight:700}
+    :focus-visible{outline:2px solid var(--brand-700);outline-offset:2px;border-radius:var(--r-xs)}
+    ::-webkit-scrollbar{width:10px;height:10px}
+    ::-webkit-scrollbar-thumb{background:var(--ink-200);border-radius:var(--r-pill);border:2px solid var(--ink-50)}
+
+    .container{width:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-pad)}
+    .text-muted{color:var(--ink-400)} .text-xs{font-size:var(--fs-xs)} .text-sm{font-size:var(--fs-sm)}
+    .text-danger{color:var(--danger)} .font-bold{font-weight:700}
+    .hidden{display:none!important}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);
+      padding:11px 18px;border-radius:var(--r-md);background:var(--brand-700);color:#fff;
+      font-size:var(--fs-base);font-weight:600;line-height:1;white-space:nowrap;
+      box-shadow:var(--shadow-xs);transition:background var(--dur-fast),transform var(--dur-fast)}
+    .btn:hover{background:var(--brand-800);transform:translateY(-1px)}
+    .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+    .btn--light{background:var(--brand-100);color:var(--brand-800);box-shadow:none}
+    .btn--light:hover{background:#d4f0e0}
+    .btn--outline{background:#fff;color:var(--ink-800);border:1px solid var(--ink-100);box-shadow:none}
+    .btn--outline:hover{background:var(--brand-50);border-color:var(--brand-700);color:var(--brand-800)}
+    .btn--accent{background:var(--accent-500);color:var(--brand-900);box-shadow:none}
+    .btn--accent:hover{background:var(--accent-600)}
+    .btn--danger{background:var(--danger);color:#fff}
+    .btn--sm{padding:7px 12px;font-size:var(--fs-xs);border-radius:var(--r-sm)}
+    .btn--lg{padding:14px 24px;font-size:var(--fs-md);border-radius:var(--r-lg)}
+    .btn--block{width:100%}
+
+    .input,.select,.textarea{width:100%;padding:11px 14px;border:1px solid var(--ink-100);
+      border-radius:var(--r-md);background:#fff;color:var(--ink-800);font-size:var(--fs-base);
+      transition:border-color var(--dur-fast),box-shadow var(--dur-fast)}
+    .input::placeholder,.textarea::placeholder{color:var(--ink-300)}
+    .input:focus,.select:focus,.textarea:focus{outline:none;border-color:var(--brand-700);box-shadow:0 0 0 3px rgba(8,122,80,.12)}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field__label{font-size:var(--fs-xs);font-weight:700;color:var(--ink-500);text-transform:uppercase;letter-spacing:.5px}
+    .field--full{grid-column:1/-1}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4)}
+
+    .panel{background:#fff;border:1px solid var(--ink-100);border-radius:var(--r-xl);padding:var(--sp-6);box-shadow:var(--shadow-xs)}
+    .panel__head{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);margin-bottom:var(--sp-4)}
+    .panel__title{font-size:var(--fs-base);font-weight:700}
+    .panel__subtitle{font-size:var(--fs-xs);color:var(--ink-400);margin-top:var(--sp-1)}
+
+    .status{display:inline-flex;align-items:center;padding:4px 9px;border-radius:var(--r-xs);
+      background:var(--success-bg);color:var(--success);font-size:10px;font-weight:800;
+      letter-spacing:.3px;text-transform:uppercase;white-space:nowrap}
+    .status--pending{background:var(--warning-bg);color:var(--warning)}
+    .status--processing{background:var(--info-bg);color:var(--info)}
+    .status--dispatched{background:var(--purple-bg);color:var(--purple)}
+    .status--cancelled,.status--returned{background:var(--danger-bg);color:var(--danger)}
+    .tag{display:inline-block;padding:4px 8px;border-radius:var(--r-xs);background:#fff;
+      color:var(--brand-700);font-size:10px;font-weight:800;letter-spacing:.5px;
+      text-transform:uppercase;box-shadow:var(--shadow-xs)}
+    .badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;
+      padding:0 6px;border-radius:var(--r-pill);background:var(--accent-500);color:var(--brand-900);
+      font-size:var(--fs-xs);font-weight:700}
+
+    .notice{padding:var(--sp-3) var(--sp-4);border-radius:var(--r-md);font-size:var(--fs-sm);line-height:1.5}
+    .notice--warning{background:#fff6df;border:1px solid #f2dfab;color:#77530c}
+    .notice--info{background:#eef4ff;border:1px solid #c9daf5;color:#2a4a7a}
+    .notice--danger{background:var(--danger-bg);border:1px solid #f5c9c9;color:#963535}
+    .empty{text-align:center;padding:var(--sp-12) var(--sp-6);color:var(--ink-400)}
+    .empty p{margin-bottom:var(--sp-4)}
+
+    .toast{position:fixed;left:50%;bottom:var(--sp-6);transform:translate(-50%,120%);opacity:0;
+      padding:13px 20px;max-width:min(480px,90vw);border-radius:var(--r-md);background:var(--brand-900);
+      color:#fff;font-size:var(--fs-sm);box-shadow:var(--shadow-xl);z-index:1000;pointer-events:none;
+      transition:transform var(--dur-base),opacity var(--dur-base)}
+    .toast.is-visible{transform:translate(-50%,0);opacity:1}
+
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+      padding:var(--sp-6);background:rgba(4,58,40,.72);backdrop-filter:blur(6px);z-index:500}
+    .modal.is-open{display:flex}
+    .modal__dialog{width:min(560px,100%);max-height:90vh;overflow-y:auto;padding:var(--sp-6);
+      border-radius:var(--r-xl);background:#fff;box-shadow:var(--shadow-xl);
+      animation:modalIn var(--dur-base) var(--ease-out)}
+    @keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .modal__head{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);margin-bottom:var(--sp-6)}
+    .modal__title{font-size:var(--fs-lg);font-weight:700}
+    .modal__close{display:grid;place-items:center;width:36px;height:36px;border-radius:var(--r-sm);
+      background:var(--ink-50);color:var(--ink-700);font-size:var(--fs-lg)}
+    .modal__close:hover{background:var(--ink-100)}
+    .modal__actions{display:flex;justify-content:flex-end;gap:var(--sp-2);margin-top:var(--sp-6)}
+
+    .table-wrap{overflow-x:auto}
+    .table{width:100%;min-width:640px;font-size:var(--fs-sm)}
+    .table th{padding:var(--sp-3) var(--sp-2);border-bottom:1px solid var(--ink-100);color:var(--ink-400);
+      font-size:10px;font-weight:800;letter-spacing:.6px;text-align:left;text-transform:uppercase;white-space:nowrap}
+    .table td{padding:var(--sp-3) var(--sp-2);border-bottom:1px solid #eef2ef;vertical-align:middle}
+    .table tbody tr:hover{background:var(--brand-50)}
+    .table tr:last-child td{border-bottom:none}
+
+    .site-header{position:sticky;top:0;z-index:100;height:var(--header-h);
+      background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid var(--ink-100)}
+    .site-header__inner{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);
+      height:100%;max-width:var(--container-max);margin-inline:auto;padding-inline:var(--container-pad)}
+    .brand{display:flex;align-items:center;gap:var(--sp-3);flex-shrink:0}
+    .brand__mark{display:grid;place-items:center;width:38px;height:38px;border-radius:var(--r-md);
+      background:var(--brand-700);color:#fff;font-weight:900;font-size:var(--fs-lg)}
+    .brand__text{font-size:21px;font-weight:900;letter-spacing:1.5px;line-height:1.1;color:var(--brand-800)}
+    .brand__text small{display:block;font-size:8px;font-weight:700;letter-spacing:2px;color:var(--ink-400)}
+    .brand--light .brand__text{color:#fff}
+    .brand--light .brand__text small{color:#b8d8c7}
+    .brand--light .brand__mark{background:var(--accent-500);color:var(--brand-900)}
+    .site-nav{display:flex;align-items:center;gap:var(--sp-6)}
+    .site-nav__link{font-size:var(--fs-base);font-weight:600;color:var(--ink-600)}
+    .site-nav__link:hover{color:var(--brand-700)}
+    .site-header__actions{display:flex;align-items:center;gap:var(--sp-2)}
+
+    .page{display:none}
+    .page.is-active{display:block;animation:fadeIn var(--dur-base) var(--ease-out)}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;min-height:400px;margin:var(--sp-6) 0;
+      border-radius:var(--r-2xl);background:linear-gradient(120deg,#073d2b,#087a50 65%,#39a86c);
+      color:#fff;overflow:hidden}
+    .hero__content{display:flex;flex-direction:column;justify-content:center;padding:var(--sp-12) var(--sp-10)}
+    .hero__eyebrow{margin-bottom:var(--sp-4);font-size:var(--fs-xs);font-weight:800;
+      letter-spacing:2px;text-transform:uppercase;color:#b9f08c}
+    .hero__title{margin-bottom:var(--sp-4);font-size:clamp(2.25rem,5vw,3.875rem);
+      font-weight:900;letter-spacing:-2px;line-height:1.02}
+    .hero__description{max-width:480px;margin-bottom:var(--sp-6);color:#d6f0e2;line-height:1.7}
+    .hero__cta{align-self:flex-start}
+    .hero__art{position:relative;display:flex;align-items:center;justify-content:center;min-height:320px}
+    .hero__orb{position:relative;display:grid;place-items:center;width:290px;height:290px;
+      border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+    .hero__orb::before,.hero__orb::after{content:"";position:absolute;
+      border:1px solid rgba(255,255,255,.18);border-radius:50%}
+    .hero__orb::before{width:360px;height:360px}
+    .hero__orb::after{width:420px;height:420px}
+    .bottle{position:relative;width:100px;height:190px;border:1px solid rgba(255,255,255,.6);
+      border-radius:20px 20px 26px 26px;background:linear-gradient(90deg,#e8f7ed,#fff 40%,#b8e8c9);
+      box-shadow:18px 22px 30px rgba(0,61,39,.25);transform:rotate(8deg)}
+    .bottle::before{content:"";position:absolute;top:-24px;left:29px;width:42px;height:30px;
+      border-radius:8px 8px 3px 3px;background:#e9f6ed}
+    .bottle::after{content:"SURFEELA\A CLEAN POWER";white-space:pre;position:absolute;
+      top:65px;left:8px;right:8px;padding:12px 0;border-radius:5px;background:var(--brand-700);
+      color:#fff;font-size:11px;font-weight:900;line-height:1.6;text-align:center}
+    .hero__float{position:absolute;padding:12px 16px;border-radius:var(--r-md);background:#fff;
+      color:var(--brand-900);font-size:var(--fs-xs);font-weight:700;white-space:nowrap;
+      box-shadow:var(--shadow-lg)}
+    .hero__float--top{top:46px;right:30px}
+    .hero__float--bottom{bottom:45px;left:10px}
+
+    .trust-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-bottom:var(--sp-12)}
+    .trust-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-4);
+      border:1px solid var(--ink-100);border-radius:var(--r-lg);background:#fff}
+    .trust-item__icon{display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;
+      border-radius:var(--r-md);background:var(--brand-100);font-size:var(--fs-lg)}
+    .trust-item__title{display:block;font-size:var(--fs-sm);font-weight:700}
+    .trust-item__sub{font-size:var(--fs-xs);color:var(--ink-400)}
+
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-5)}
+    .section-head__title{font-size:var(--fs-2xl);font-weight:700;letter-spacing:-.6px}
+    .section-head__subtitle{margin-top:6px;font-size:var(--fs-sm);color:var(--ink-400)}
+
+    .filter-bar{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-5)}
+    .filter-bar .input{flex:1;min-width:200px}
+
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-bottom:var(--sp-12)}
+    .product-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--ink-100);
+      border-radius:var(--r-xl);background:#fff;box-shadow:var(--shadow-xs);
+      transition:transform var(--dur-base),box-shadow var(--dur-base)}
+    .product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+    .product-card__media{position:relative;display:grid;place-items:center;height:200px;
+      background:linear-gradient(145deg,#f1f9f3,#e3f2e7);overflow:hidden}
+    .product-card__media img{width:100%;height:100%;object-fit:cover}
+    .product-card__badge{position:absolute;top:12px;left:12px;z-index:1}
+    .product-card__body{display:flex;flex-direction:column;flex:1;padding:var(--sp-4)}
+    .product-card__title{margin-bottom:4px;font-size:var(--fs-base);font-weight:700}
+    .product-card__meta{margin-bottom:var(--sp-2);font-size:var(--fs-xs);color:var(--ink-400)}
+    .product-card__rating{margin-bottom:var(--sp-2);font-size:var(--fs-sm);color:#b87910}
+    .product-card__footer{display:flex;align-items:center;justify-content:space-between;
+      gap:var(--sp-2);margin-top:auto;padding-top:var(--sp-2)}
+    .product-card__price{font-size:var(--fs-lg);font-weight:900}
+    .product-card__price small{font-size:10px;font-weight:500;color:var(--ink-400)}
+    .product-card__stock{font-size:10px;font-weight:800;color:var(--brand-700);white-space:nowrap}
+    .product-card__stock--low{color:var(--danger)}
+    .product-card__cta{margin-top:var(--sp-3)}
+
+    .pack{position:relative;width:94px;height:132px;border:1px solid #d5eadd;
+      border-radius:12px 12px 18px 18px;background:linear-gradient(90deg,#e7f7e9,#fff,#bfe7cc);
+      box-shadow:10px 12px 18px rgba(26,88,48,.15)}
+    .pack--powder{width:120px;height:112px;border-radius:8px 8px 15px 15px;
+      background:linear-gradient(90deg,#e8f5eb,#fff,#c5e9d0)}
+    .pack--blue{background:linear-gradient(90deg,#cbe8ff,#fff,#83c4f2)}
+    .pack--gold{background:linear-gradient(90deg,#f7e6a5,#fff,#e6c75c)}
+    .pack::before{content:"";position:absolute;top:-13px;left:25%;width:50%;height:16px;
+      border:1px solid #d5eadd;border-radius:5px 5px 1px 1px;background:inherit}
+    .pack__label{position:absolute;top:40%;left:5px;right:5px;padding:8px 2px;border-radius:4px;
+      background:var(--brand-700);color:#fff;font-size:10px;font-weight:900;letter-spacing:.5px;text-align:center}
+    .pack__label small{display:block;margin-top:3px;font-size:6px;font-weight:600;letter-spacing:1px}
+
+    .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-bottom:var(--sp-12)}
+    .category-card{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-4) var(--sp-5);
+      border:1px solid var(--ink-100);border-radius:var(--r-lg);background:#fff;text-align:left;
+      transition:border-color var(--dur-fast),background var(--dur-fast)}
+    .category-card:hover{border-color:var(--brand-700);background:var(--brand-50)}
+    .category-card__icon{font-size:24px}
+    .category-card__title{font-size:var(--fs-sm);font-weight:700;display:block}
+    .category-card__sub{font-size:var(--fs-xs);color:var(--ink-400)}
+
+    .review-list{display:flex;flex-direction:column}
+    .review-item{padding:var(--sp-4) 0;border-bottom:1px solid var(--ink-100)}
+    .review-item:last-child{border-bottom:none;padding-bottom:0}
+    .review-item__stars{margin-bottom:4px;color:#c28a1a;font-size:var(--fs-sm)}
+    .review-item__product{font-size:var(--fs-sm);font-weight:700}
+    .review-item__text{margin:var(--sp-1) 0;font-size:var(--fs-sm);color:var(--ink-400)}
+    .review-item__meta{font-size:var(--fs-xs);color:var(--ink-400)}
+
+    .site-footer{margin-top:var(--sp-12);padding:var(--sp-12) var(--sp-6);background:var(--brand-900);color:#fff}
+    .site-footer__inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-8);
+      max-width:var(--container-max);margin-inline:auto}
+    .site-footer p{font-size:var(--fs-sm);line-height:1.8;color:#c1d9cd}
+    .site-footer a{color:#c1d9cd}
+    .site-footer a:hover{color:#fff}
+    .site-footer__heading{margin-bottom:var(--sp-3);font-size:var(--fs-sm);font-weight:700}
+
+    .cart-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--sp-6)}
+    .qty-control{display:inline-flex;align-items:center;gap:var(--sp-2)}
+    .qty-control__value{min-width:24px;font-size:var(--fs-sm);font-weight:700;text-align:center}
+    .cart-summary__row{display:flex;justify-content:space-between;padding:var(--sp-2) 0;font-size:var(--fs-sm)}
+    .cart-summary__row--total{margin-top:var(--sp-2);padding-top:var(--sp-4);
+      border-top:1px solid var(--ink-100);font-size:var(--fs-lg);font-weight:700}
+
+    .dashboard{display:grid;grid-template-columns:var(--sidebar-w) minmax(0,1fr);gap:var(--sp-6);
+      max-width:1440px;margin-inline:auto;padding:var(--sp-6)}
+    .sidebar{position:sticky;top:calc(var(--header-h) + var(--sp-5));height:fit-content;
+      padding:var(--sp-4);border:1px solid var(--ink-100);border-radius:var(--r-xl);background:#fff}
+    .sidebar__brand{padding-bottom:var(--sp-4);margin-bottom:var(--sp-3);border-bottom:1px solid var(--ink-100)}
+    .sidebar__section{margin:var(--sp-5) 10px var(--sp-2);font-size:10px;font-weight:900;
+      letter-spacing:1.5px;color:var(--ink-400);text-transform:uppercase}
+    .sidebar__link{display:flex;align-items:center;gap:var(--sp-3);width:100%;padding:11px 12px;
+      border-radius:var(--r-sm);color:var(--ink-500);font-size:var(--fs-sm);font-weight:600;text-align:left;
+      transition:background var(--dur-fast),color var(--dur-fast)}
+    .sidebar__link:hover{background:var(--brand-50);color:var(--brand-800)}
+    .sidebar__link.is-active{background:var(--brand-100);color:var(--brand-800);font-weight:700}
+    .sidebar__note{padding:var(--sp-4) var(--sp-2);font-size:10px;line-height:1.6;color:var(--ink-400)}
+    .dashboard__main{min-width:0}
+    .dashboard__header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      gap:var(--sp-4);margin-bottom:var(--sp-6)}
+    .dashboard__title{font-size:var(--fs-2xl);font-weight:700;letter-spacing:-.8px}
+    .dashboard__subtitle{margin-top:6px;font-size:var(--fs-sm);color:var(--ink-400)}
+    .dashboard__actions{display:flex;align-items:center;gap:var(--sp-2)}
+
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-bottom:var(--sp-6)}
+    .kpi{padding:var(--sp-4);border:1px solid var(--ink-100);border-radius:var(--r-lg);background:#fff;box-shadow:var(--shadow-xs)}
+    .kpi__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-4);
+      font-size:var(--fs-sm);color:var(--ink-400)}
+    .kpi__icon{display:grid;place-items:center;width:34px;height:34px;border-radius:var(--r-sm);
+      background:var(--brand-100);font-size:var(--fs-base)}
+    .kpi__value{font-size:var(--fs-2xl);font-weight:700;letter-spacing:-.7px;line-height:1.1}
+    .kpi__hint{margin-top:var(--sp-1);font-size:var(--fs-xs);font-weight:600;color:var(--brand-700)}
+
+    .upload-zone{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:var(--sp-2);min-height:180px;padding:var(--sp-6);border:2px dashed var(--ink-200);
+      border-radius:var(--r-lg);background:var(--brand-50);color:var(--ink-400);text-align:center;cursor:pointer;
+      transition:border-color var(--dur-fast),background var(--dur-fast)}
+    .upload-zone:hover,.upload-zone.is-dragover{border-color:var(--brand-700);background:var(--brand-100)}
+    .upload-zone__icon{font-size:2rem;color:var(--brand-700)}
+    .upload-zone__title{font-size:var(--fs-sm);font-weight:700;color:var(--ink-700)}
+    .upload-zone__hint{font-size:var(--fs-xs)}
+    .upload-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .upload-preview{display:flex;align-items:center;gap:var(--sp-4);padding:var(--sp-3);
+      border:1px solid var(--ink-100);border-radius:var(--r-lg);background:#fff}
+    .upload-preview img{width:80px;height:80px;object-fit:cover;border-radius:var(--r-md);border:1px solid var(--ink-100)}
+    .upload-preview__info{flex:1;min-width:0}
+    .upload-preview__name{font-size:var(--fs-sm);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .upload-preview__meta{font-size:var(--fs-xs);color:var(--ink-400)}
+
+    .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);
+      border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loading-block{text-align:center;padding:var(--sp-12);color:var(--ink-400)}
+    .loading-block .spinner{border-color:var(--ink-200);border-top-color:var(--brand-700)}
+
+    .role-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:var(--r-pill);
+      background:var(--brand-100);color:var(--brand-800);font-size:var(--fs-xs);font-weight:700}
+
+    .access-denied{max-width:480px;margin:var(--sp-12) auto;text-align:center;padding:var(--sp-8);
+      background:#fff;border:1px solid var(--ink-100);border-radius:var(--r-xl);box-shadow:var(--shadow-sm)}
+    .access-denied__icon{font-size:3rem;margin-bottom:var(--sp-4)}
+    .access-denied h2{font-size:var(--fs-xl);margin-bottom:var(--sp-3)}
+    .access-denied p{color:var(--ink-400);margin-bottom:var(--sp-6)}
+
+    @media(max-width:1200px){.product-grid{grid-template-columns:repeat(3,1fr)}.category-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:960px){
+      .hero{grid-template-columns:1fr}.hero__art{min-height:220px;padding-bottom:var(--sp-6)}
+      .hero__orb{transform:scale(.8)}.hero__float--top{top:18px;right:16px}.hero__float--bottom{bottom:18px;left:16px}
+      .trust-strip{grid-template-columns:repeat(2,1fr)}.product-grid{grid-template-columns:repeat(2,1fr)}
+      .dashboard{grid-template-columns:1fr;padding:var(--sp-4)}
+      .sidebar{position:static;display:flex;overflow-x:auto;gap:var(--sp-1);padding:var(--sp-2)}
+      .sidebar__brand,.sidebar__section,.sidebar__note{display:none}
+      .sidebar__link{width:auto;white-space:nowrap;flex-shrink:0}
+      .kpi-grid{grid-template-columns:repeat(2,1fr)}.cart-layout{grid-template-columns:1fr}
+      .site-nav{gap:var(--sp-4)}.site-nav__link{font-size:var(--fs-sm)}
+    }
+    @media(max-width:640px){
+      :root{--header-h:62px;--container-pad:16px}
+      .brand__text{font-size:var(--fs-md)}.brand__mark{width:34px;height:34px}.site-nav{display:none}
+      .hero{border-radius:var(--r-xl)}.hero__content{padding:var(--sp-8) var(--sp-5) var(--sp-4)}
+      .hero__title{font-size:2.5rem}
+      .hero__orb{width:190px;height:190px}.hero__orb::before{width:240px;height:240px}.hero__orb::after{width:280px;height:280px}
+      .bottle{transform:scale(.75) rotate(8deg)}
+      .trust-strip{gap:var(--sp-2);margin-bottom:var(--sp-8)}
+      .trust-item{padding:var(--sp-2);gap:var(--sp-2)}.trust-item__icon{width:32px;height:32px;font-size:var(--fs-sm)}
+      .trust-item__title{font-size:var(--fs-xs)}.trust-item__sub{font-size:9px}
+      .section-head{flex-direction:column;align-items:flex-start}.section-head__title{font-size:var(--fs-xl)}
+      .product-grid{gap:var(--sp-2)}.product-card__media{height:160px}
+      .product-card__body{padding:var(--sp-2)}.product-card__title{font-size:var(--fs-xs)}
+      .category-grid{grid-template-columns:repeat(2,1fr);gap:var(--sp-2)}
+      .category-card{padding:var(--sp-2) var(--sp-3);gap:var(--sp-2)}
+      .dashboard{padding:var(--sp-2)}.kpi-grid{gap:var(--sp-2)}.kpi{padding:var(--sp-2)}
+      .kpi__value{font-size:var(--fs-xl)}.dashboard__title{font-size:var(--fs-xl)}
+      .form-grid{grid-template-columns:1fr}.field--full{grid-column:auto}
+      .site-footer__inner{flex-direction:column;gap:var(--sp-6)}.modal__dialog{padding:var(--sp-4)}
+      .upload-preview{flex-direction:column;text-align:center}
+    }
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    @media print{.site-header,.site-footer,.sidebar,.toast,.modal{display:none!important}.page{display:block!important}body{background:#fff}}
+  </style>
+</head>
+<body>
+
+  <!-- ======================= SITE HEADER ======================= -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="#" class="brand" onclick="App.go('store'); return false;" aria-label="SURFEELA home">
+        <span class="brand__mark" aria-hidden="true">S</span>
+        <span class="brand__text">
+          SURFEELA
+          <small>CLEANER HOME, BRIGHTER LIFE</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <button class="site-nav__link" onclick="App.go('store')">Home</button>
+        <button class="site-nav__link" onclick="App.scrollToProducts()">Shop</button>
+        <button class="site-nav__link" onclick="App.go('reviews')">Reviews</button>
+        <button class="site-nav__link" onclick="App.go('account')" id="navAccount">Account</button>
+        <button class="site-nav__link" onclick="App.go('admin')" id="navAdmin" style="display:none;">Staff</button>
+      </nav>
+      <div class="site-header__actions">
+        <span id="authStatus" class="text-xs text-muted" style="margin-right:var(--sp-2)"></span>
+        <button class="btn btn--sm" id="authBtn" onclick="Auth.onAuthButtonClick()">Sign in</button>
+        <button class="btn btn--outline btn--sm" onclick="App.go('cart')" aria-label="Open shopping bag">
+          Bag <span class="badge" id="cartCount" aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================= CUSTOMER: STOREFRONT ======================= -->
+  <main id="page-store" class="page is-active" role="main">
+    <div class="container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Everyday clean. Everyday confidence.</p>
+          <h1 class="hero__title" id="hero-title">A cleaner home<br>starts here.</h1>
+          <p class="hero__description">
+            Discover dependable cleaning essentials for your home, shop, and business —
+            thoughtfully made for everyday life.
+          </p>
+          <button class="btn btn--accent btn--lg hero__cta" onclick="App.scrollToProducts()">
+            Explore products ↗
+          </button>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="hero__orb"><div class="bottle"></div></div>
+          <div class="hero__float hero__float--top">✦ Everyday cleaning</div>
+          <div class="hero__float hero__float--bottom">✓ Home & business range</div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Why shop with us">
+        <div class="trust-item"><div class="trust-item__icon">✦</div><div>
+          <span class="trust-item__title">Everyday essentials</span>
+          <span class="trust-item__sub">For your cleaning routine</span></div></div>
+        <div class="trust-item"><div class="trust-item__icon">▣</div><div>
+          <span class="trust-item__title">Bulk ordering</span>
+          <span class="trust-item__sub">Retail & wholesale options</span></div></div>
+        <div class="trust-item"><div class="trust-item__icon">↗</div><div>
+          <span class="trust-item__title">Order updates</span>
+          <span class="trust-item__sub">Track your order status</span></div></div>
+        <div class="trust-item"><div class="trust-item__icon">♡</div><div>
+          <span class="trust-item__title">Customer feedback</span>
+          <span class="trust-item__sub">Share your experience</span></div></div>
+      </section>
+
+      <section aria-labelledby="products-title">
+        <div class="section-head">
+          <div>
+            <h2 class="section-head__title" id="products-title">Shop cleaning essentials</h2>
+            <p class="section-head__subtitle">Explore the SURFEELA range for every corner of your home.</p>
+          </div>
+        </div>
+        <div class="filter-bar" role="search">
+          <input type="search" class="input" id="productSearch" placeholder="Search products…"
+            aria-label="Search products" oninput="Store.renderProducts()">
+          <select class="select" id="categoryFilter" aria-label="Filter by category" onchange="Store.renderProducts()">
+            <option value="All">All categories</option>
+            <option>Washing Powder</option>
+            <option>Dishwashing</option>
+            <option>Liquid Cleaners</option>
+            <option>Home Care</option>
+          </select>
+          <select class="select" id="sortFilter" aria-label="Sort products" onchange="Store.renderProducts()">
+            <option value="featured">Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </div>
+        <div class="product-grid" id="productsGrid">
+          <div class="loading-block" style="grid-column:1/-1"><span class="spinner"></span>
+            <p style="margin-top:var(--sp-3)">Loading products…</p></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="home-reviews-title">
+        <div class="section-head">
+          <div>
+            <h2 class="section-head__title" id="home-reviews-title">What customers say</h2>
+            <p class="section-head__subtitle">Reviews are moderated before appearing here.</p>
+          </div>
+          <button class="btn btn--outline btn--sm" onclick="App.go('reviews')">View reviews</button>
+        </div>
+        <div class="panel"><div class="review-list" id="homeReviews"></div></div>
+      </section>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer__inner">
+        <div>
+          <div class="brand brand--light" style="margin-bottom: var(--sp-4);">
+            <span class="brand__mark">S</span>
+            <span class="brand__text">SURFEELA<small>CLEANER HOME, BRIGHTER LIFE</small></span>
+          </div>
+          <p>Cleaning essentials for homes, retailers, and wholesale partners.</p>
+        </div>
+        <div>
+          <div class="site-footer__heading">Company</div>
+          <p>Peshawar, Pakistan</p>
+          <p>Contact: 03709321120</p>
+          <p>surfeela@gmail.com</p>
+        </div>
+        <div>
+          <div class="site-footer__heading">Quick links</div>
+          <p><a href="#" onclick="App.go('account'); return false;">My account</a></p>
+          <p>Delivery · Returns · Privacy</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ======================= CUSTOMER: CART ======================= -->
+  <section id="page-cart" class="page" role="main">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-head__title">Your shopping bag</h2>
+          <p class="section-head__subtitle">Review items before placing your order.</p>
+        </div>
+        <button class="btn btn--outline" onclick="App.go('store')">← Continue shopping</button>
+      </div>
+      <div id="cartContent"></div>
+    </div>
+  </section>
+
+  <!-- ======================= CUSTOMER: REVIEWS ======================= -->
+  <section id="page-reviews" class="page" role="main">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-head__title">Customer reviews</h2>
+          <p class="section-head__subtitle">Reviews are moderated before they appear publicly.</p>
+        </div>
+        <button class="btn" onclick="Reviews.openForm()">＋ Write a review</button>
+      </div>
+      <div id="reviewsContent" style="display: grid; gap: var(--sp-4);"></div>
+    </div>
+  </section>
+
+  <!-- ======================= CUSTOMER: MY ACCOUNT ======================= -->
+  <section id="page-account" class="page" role="main">
+    <div class="container" id="accountContent"></div>
+  </section>
+
+  <!-- ======================= PROTECTED: STAFF / ADMIN / COMPANY ======================= -->
+  <section id="page-admin" class="page" role="main">
+    <!-- Access check placeholder — content rendered only after verification -->
+    <div class="container" id="adminGate">
+      <div class="access-denied">
+        <div class="access-denied__icon">🔒</div>
+        <h2>Restricted Area</h2>
+        <p>You need to sign in with a staff account to access this area.</p>
+        <button class="btn" onclick="Auth.openLogin()">Sign in</button>
+      </div>
+    </div>
+
+    <div class="dashboard hidden" id="adminContent">
+      <aside class="sidebar" aria-label="Dashboard navigation">
+        <div class="sidebar__brand brand">
+          <span class="brand__mark">S</span>
+          <span class="brand__text" style="font-size: var(--fs-md);">
+            SURFEELA<small>CONTROL CENTER</small>
+          </span>
+        </div>
+        <div class="sidebar__section" id="sidebarRole">—</div>
+        <div id="sidebarNav"></div>
+        <div class="sidebar__note" id="sidebarNote">
+          Changes are saved to Firestore.
+        </div>
+        <button class="btn btn--outline btn--block" style="margin-top: var(--sp-2);" onclick="Auth.signOut()">Sign out</button>
+        <button class="btn btn--light btn--block" style="margin-top: var(--sp-2);" onclick="App.go('store')">↗ Storefront</button>
+      </aside>
+      <div class="dashboard__main">
+        <div class="dashboard__header">
+          <div>
+            <h1 class="dashboard__title" id="dashTitle">Welcome</h1>
+            <p class="dashboard__subtitle" id="dashSubtitle">Loading…</p>
+          </div>
+          <div class="dashboard__actions" id="dashActions"></div>
+        </div>
+        <div id="dashboardContent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= MODAL & TOAST ======================= -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
+    onclick="if (event.target === this) Modal.close()">
+    <div class="modal__dialog">
+      <div class="modal__head">
+        <h2 class="modal__title" id="modalTitle">Dialog</h2>
+        <button class="modal__close" onclick="Modal.close()" aria-label="Close dialog">×</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- ======================= FIREBASE INIT ======================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getFirestore, collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc,
+      query, where, orderBy, serverTimestamp, limit
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import {
+      getStorage, ref as storageRef, uploadBytes, getDownloadURL
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+    import {
+      getAuth, signInWithEmailAndPassword, signOut,
+      onAuthStateChanged, sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    // ⚠️  After regenerating your key in Google Cloud Console, paste the NEW key here.
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9MmA6JYojstFpY8keL5q_31EFZek8WK4",
+      authDomain: "surfeela-dfcfb.firebaseapp.com",
+      projectId: "surfeela-dfcfb",
+      storageBucket: "surfeela-dfcfb.firebasestorage.app",
+      messagingSenderId: "628212495495",
+      appId: "1:628212495495:web:ca2a97b2dff89f58003422"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    window.Firebase = {
+      app,
+      db: getFirestore(app),
+      storage: getStorage(app),
+      auth: getAuth(app),
+      sdk: {
+        collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc,
+        query, where, orderBy, serverTimestamp, limit,
+        storageRef, uploadBytes, getDownloadURL,
+        signInWithEmailAndPassword, signOut, onAuthStateChanged,
+        sendPasswordResetEmail
+      }
+    };
+
+    window.dispatchEvent(new Event('firebase-ready'));
+  </script>
+
+  <!-- ======================= APP LOGIC ======================= -->
+  <script>
+    function bootApp() {
+      'use strict';
+
+      /* ============================================================
+         CONSTANTS
+         ============================================================ */
+      const ROLES = {
+        CUSTOMER:    'customer',
+        SALESMAN:    'salesman',
+        INVENTORY:   'inventory',
+        ADMIN:       'admin',
+        SUPER_ADMIN: 'super_admin'
+      };
+
+      const ROLE_LABELS = {
+        customer:    'Customer',
+        salesman:    'Salesman / Order Booker',
+        inventory:   'Inventory Manager',
+        admin:       'Administrator',
+        super_admin: 'Super Admin'
+      };
+
+      // Pages any signed-in staff may open
+      const STAFF_PAGES = ['overview', 'orders', 'products', 'inventory',
+                           'customers', 'reviews', 'sales', 'staff', 'settings'];
+
+      // Role → allowed dashboard tabs
+      const ROLE_TABS = {
+        super_admin: ['overview','orders','products','inventory','customers','reviews','sales','staff','settings'],
+        admin:       ['overview','orders','products','inventory','customers','reviews','sales','settings'],
+        inventory:   ['overview','products','inventory'],
+        salesman:    ['overview','orders','customers']
+      };
+
+      /* ============================================================
+         MODULE: Utils
+         ============================================================ */
+      const Utils = (() => {
+        const money = (n) => 'Rs ' + Number(n || 0).toLocaleString('en-PK');
+        const escapeHTML = (s) =>
+          String(s ?? '').replace(/[&<>"']/g, (c) => ({
+            '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+          }[c]));
+        const formatBytes = (b) => {
+          if (!b) return '0 B';
+          const k = 1024, sizes = ['B','KB','MB','GB'];
+          const i = Math.floor(Math.log(b) / Math.log(k));
+          return parseFloat((b / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        };
+        return { money, escapeHTML, formatBytes };
+      })();
+
+      /* ============================================================
+         MODULE: Toast
+         ============================================================ */
+      const Toast = (() => {
+        let timer = null;
+        const el = document.getElementById('toast');
+        function show(msg, dur = 3000) {
+          el.textContent = msg;
+          el.classList.add('is-visible');
+          clearTimeout(timer);
+          timer = setTimeout(() => el.classList.remove('is-visible'), dur);
+        }
+        return { show };
+      })();
+
+      /* ============================================================
+         MODULE: Modal
+         ============================================================ */
+      const Modal = (() => {
+        const root = document.getElementById('modal');
+        const titleEl = document.getElementById('modalTitle');
+        const bodyEl = document.getElementById('modalBody');
+        function open(title, html) {
+          titleEl.textContent = title;
+          bodyEl.innerHTML = html;
+          root.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          const focusable = root.querySelector('input, select, textarea, button');
+          if (focusable) setTimeout(() => focusable.focus(), 50);
+        }
+        function close() {
+          root.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && root.classList.contains('is-open')) close();
+        });
+        return { open, close };
+      })();
+
+      /* ============================================================
+         MODULE: Auth (Role Based Access Control)
+         ============================================================ */
+      const Auth = (() => {
+        const { auth, sdk } = window.Firebase;
+        const { signInWithEmailAndPassword, signOut, onAuthStateChanged,
+                sendPasswordResetEmail } = sdk;
+
+        let currentUser = null;
+        let currentRole = null;     // 'customer' if signed in but no role claim
+        let isInitialized = false;
+
+        function init() {
+          return new Promise((resolve) => {
+            onAuthStateChanged(auth, async (user) => {
+              currentUser = user;
+              currentRole = null;
+
+              if (user) {
+                try {
+                  const token = await user.getIdTokenResult(true);
+                  currentRole = token.claims.role || ROLES.CUSTOMER;
+                } catch {
+                  currentRole = ROLES.CUSTOMER;
+                }
+              }
+
+              updateUI();
+              isInitialized = true;
+              resolve({ user, role: currentRole });
+            });
+          });
+        }
+
+        /* ---------- UI ---------- */
+        function updateUI() {
+          const statusEl = document.getElementById('authStatus');
+          const authBtn = document.getElementById('authBtn');
+          const navAdmin = document.getElementById('navAdmin');
+
+          if (!currentUser) {
+            if (statusEl) statusEl.textContent = '';
+            if (authBtn) { authBtn.textContent = 'Sign in'; authBtn.onclick = () => showLogin(); }
+            if (navAdmin) navAdmin.style.display = 'none';
+            return;
+          }
+
+          const label = ROLE_LABELS[currentRole] || currentRole;
+          if (statusEl) statusEl.textContent = `Signed in · ${label}`;
+          if (authBtn) {
+            authBtn.textContent = 'Sign out';
+            authBtn.onclick = async () => { await signOut(auth); Toast.show('Signed out.'); App.go('store'); };
+          }
+
+          // Staff link visible only to non-customers
+          if (navAdmin) {
+            navAdmin.style.display = (currentRole && currentRole !== ROLES.CUSTOMER) ? '' : 'none';
+          }
+        }
+
+        /* ---------- Login ---------- */
+        function showLogin() {
+          Modal.open('Sign in', `
+            <div class="notice notice--info" style="margin-bottom:var(--sp-4);">
+              Customers and staff sign in with the same form.
+              Your access level is determined by your account, not by anything you type here.
+            </div>
+            <form onsubmit="window.__handleLogin(event)">
+              <div class="field">
+                <label class="field__label">Email</label>
+                <input class="input" name="email" type="email" required autocomplete="username">
+              </div>
+              <div class="field" style="margin-top:var(--sp-3);">
+                <label class="field__label">Password</label>
+                <input class="input" name="password" type="password" required autocomplete="current-password">
+              </div>
+              <div style="margin-top:var(--sp-3);text-align:right;">
+                <button type="button" class="btn btn--ghost btn--sm"
+                  onclick="Auth.openResetPassword()">Forgot password?</button>
+              </div>
+              <div class="modal__actions">
+                <button class="btn btn--outline" type="button" onclick="Modal.close()">Cancel</button>
+                <button class="btn" type="submit">Sign in</button>
+              </div>
+            </form>
+          `);
+        }
+
+        window.__handleLogin = async (event) => {
+          event.preventDefault();
+          const f = new FormData(event.target);
+          try {
+            await signInWithEmailAndPassword(auth, f.get('email'), f.get('password'));
+            Modal.close();
+            Toast.show('Signed in.');
+            // If we were on the admin gate, re-render
+            if (document.getElementById('page-admin').classList.contains('is-active')) {
+              App.go('admin');
+            }
+          } catch (err) {
+            Toast.show('Sign-in failed: ' + err.message);
+          }
+        };
+
+        function openResetPassword() {
+          Modal.open('Reset password', `
+            <form onsubmit="window.__handleReset(event)">
+              <div class="field">
+                <label class="field__label">Email</label>
+                <input class="input" name="email" type="email" required>
+              </div>
+              <div class="modal__actions">
+                <button class="btn btn--outline" type="button" onclick="Modal.close()">Cancel</button>
+                <button class="btn" type="submit">Send reset email</button>
+              </div>
+            </form>
+          `);
+        }
+
+        window.__handleReset = async (event) => {
+          event.preventDefault();
+          const f = new FormData(event.target);
+          try {
+            await sendPasswordResetEmail(auth, f.get('email'));
+            Toast.show('If the email exists, a reset link was sent.');
+            Modal.close();
+          } catch (err) {
+            Toast.show('Could not send reset email: ' + err.message);
+          }
+        };
+
+        /* ---------- Authorization ---------- */
+        function hasRole(allowed) {
+          if (!currentUser || !currentRole) return false;
+          return allowed.includes(currentRole);
+        }
+
+        function isStaff() {
+          return hasRole([ROLES.SALESMAN, ROLES.INVENTORY, ROLES.ADMIN, ROLES.SUPER_ADMIN]);
+        }
+
+        function isAdmin() {
+          return hasRole([ROLES.ADMIN, ROLES.SUPER_ADMIN]);
+        }
+
+        function isSuperAdmin() {
+          return hasRole([ROLES.SUPER_ADMIN]);
+        }
+
+        function canSeeTab(tab) {
+          if (!currentRole) return false;
+          const allowed = ROLE_TABS[currentRole];
+          return allowed && allowed.includes(tab);
+        }
+
+        function openLogin() { showLogin(); }
+
+        function onAuthButtonClick() {
+          if (currentUser) {
+            signOut(auth).then(() => {
+              Toast.show('Signed out.');
+              App.go('store');
+            });
+          } else {
+            showLogin();
+          }
+        }
+
+        return {
+          init,
+          get user() { return currentUser; },
+          get role() { return currentRole; },
+          get initialized() { return isInitialized; },
+          hasRole, isStaff, isAdmin, isSuperAdmin, canSeeTab,
+          showLogin, openLogin, onAuthButtonClick,
+          openResetPassword
+        };
+      })();
+
+      /* ============================================================
+         MODULE: DataStore (Firestore)
+         ============================================================ */
+      const DataStore = (() => {
+        const { db, sdk } = window.Firebase;
+        const { collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc,
+                query, where, orderBy, serverTimestamp, limit } = sdk;
+        const CART_KEY = 'surfeela_cart';
+
+        const state = {
+          products: [], orders: [], reviews: [], customers: [],
+          cart: readLocal(CART_KEY, [])
+        };
+
+        function readLocal(k, fb) {
+          try { const r = localStorage.getItem(k); return r ? JSON.parse(r) : fb; }
+          catch { return fb; }
+        }
+        function writeLocal(k, v) {
+          try { localStorage.setItem(k, JSON.stringify(v)); } catch {}
+        }
+
+        /* ---------------- Products ---------------- */
+        async function loadProducts() {
+          const snap = await getDocs(query(collection(db, 'products'), orderBy('name')));
+          state.products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        }
+        async function createProduct(data) {
+          const ref = await addDoc(collection(db, 'products'), {
+            ...data, createdAt: serverTimestamp(), updatedAt: serverTimestamp()
+          });
+          await loadProducts();
+          return ref.id;
+        }
+        async function updateProduct(id, data) {
+          await updateDoc(doc(db, 'products', String(id)), { ...data, updatedAt: serverTimestamp() });
+          await loadProducts();
+        }
+        async function deleteProduct(id) {
+          await deleteDoc(doc(db, 'products', String(id)));
+          await loadProducts();
+        }
+
+        /* ---------------- Orders ---------------- */
+        async function loadOrders() {
+          // Admin/salesman reads all. Customers read only their own.
+          if (Auth.isStaff()) {
+            const snap = await getDocs(query(collection(db, 'orders'), orderBy('createdAt', 'desc')));
+            state.orders = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          } else if (Auth.user) {
+            const snap = await getDocs(query(
+              collection(db, 'orders'),
+              where('uid', '==', Auth.user.uid),
+              orderBy('createdAt', 'desc')
+            ));
+            state.orders = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          } else {
+            state.orders = [];
+          }
+        }
+        async function createOrder(data) {
+          // Attach the current user's UID if signed in
+          const payload = { ...data };
+          if (Auth.user) payload.uid = Auth.user.uid;
+          const ref = await addDoc(collection(db, 'orders'), {
+            ...payload, createdAt: serverTimestamp(), updatedAt: serverTimestamp()
+          });
+          await loadOrders();
+          return ref.id;
+        }
+        async function updateOrder(id, data) {
+          await updateDoc(doc(db, 'orders', String(id)), { ...data, updatedAt: serverTimestamp() });
+          await loadOrders();
+        }
+
+        /* ---------------- Reviews ---------------- */
+        async function loadReviews() {
+          const snap = await getDocs(query(collection(db, 'reviews'), orderBy('createdAt', 'desc')));
+          state.reviews = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        }
+        async function createReview(data) {
+          const ref = await addDoc(collection(db, 'reviews'), {
+            ...data,
+            uid: Auth.user ? Auth.user.uid : null,
+            createdAt: serverTimestamp(), updatedAt: serverTimestamp()
+          });
+          await loadReviews();
+          return ref.id;
+        }
+        async function updateReview(id, data) {
+          await updateDoc(doc(db, 'reviews', String(id)), { ...data, updatedAt: serverTimestamp() });
+          await loadReviews();
+        }
+
+        /* ---------------- Customers ---------------- */
+        async function loadCustomers() {
+          if (!Auth.isAdmin()) { state.customers = []; return; }
+          const snap = await getDocs(collection(db, 'customers'));
+          state.customers = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        }
+        async function upsertCustomer(name, patch) {
+          // Only customers trigger this during checkout.
+          // Admin reads/updates happen server-side via rules.
+          const snap = await getDocs(query(collection(db, 'customers'),
+            where('name', '==', name), limit(1)));
+          if (!snap.empty) {
+            const existing = snap.docs[0];
+            await updateDoc(doc(db, 'customers', existing.id), {
+              orders: (existing.data().orders || 0) + 1,
+              total: (existing.data().total || 0) + (patch.total || 0),
+              updatedAt: serverTimestamp()
+            });
+          } else {
+            await addDoc(collection(db, 'customers'), {
+              name,
+              city: patch.city || '',
+              phone: patch.phone || '',
+              orders: 1,
+              total: patch.total || 0,
+              createdAt: serverTimestamp()
+            });
+          }
+          await loadCustomers();
+        }
+
+        /* ---------------- Audit Log ---------------- */
+        async function log(action, meta = {}) {
+          if (!Auth.user) return;
+          try {
+            await addDoc(collection(db, 'audit'), {
+              action,
+              uid: Auth.user.uid,
+              email: Auth.user.email || null,
+              role: Auth.role,
+              meta,
+              at: serverTimestamp()
+            });
+          } catch (e) { console.warn('Audit log failed:', e.message); }
+        }
+
+        function persistCart() { writeLocal(CART_KEY, state.cart); }
+
+        return {
+          get products()  { return state.products;  },
+          get orders()    { return state.orders;    },
+          get reviews()   { return state.reviews;   },
+          get customers() { return state.customers; },
+          get cart()      { return state.cart;      },
+          set cart(v)     { state.cart = v; persistCart(); },
+
+          loadProducts, loadOrders, loadReviews, loadCustomers,
+          createProduct, updateProduct, deleteProduct,
+          createOrder, updateOrder,
+          createReview, updateReview,
+          upsertCustomer, persistCart, log
+        };
+      })();
+
+      /* ============================================================
+         MODULE: StatusBadge
+         ============================================================ */
+      const StatusBadge = (() => {
+        const MAP = {
+          Delivered:'', Pending:'status--pending', Processing:'status--processing',
+          Dispatched:'status--dispatched', Cancelled:'status--cancelled', Returned:'status--returned'
+        };
+        return (s) => `<span class="status ${MAP[s] || ''}">${Utils.escapeHTML(s || '')}</span>`;
+      })();
+
+      /* ============================================================
+         MODULE: App routing
+         ============================================================ */
+      const App = (() => {
+        const pages = {
+          store:   'page-store',
+          cart:    'page-cart',
+          reviews: 'page-reviews',
+          account: 'page-account',
+          admin:   'page-admin'
+        };
+
+        function go(page) {
+          // ---- PROTECTED: admin requires staff role ----
+          if (page === 'admin' && !Auth.isStaff()) {
+            showAdminGate();
+          } else if (page === 'admin') {
+            showAdminDashboard();
+          }
+
+          // ---- PROTECTED: account requires sign-in ----
+          if (page === 'account' && !Auth.user) {
+            Auth.showLogin();
+            return;
+          }
+
+          document.querySelectorAll('.page').forEach(p => p.classList.remove('is-active'));
+          const target = document.getElementById(pages[page]);
+          if (target) target.classList.add('is-active');
+
+          if (page === 'cart')    Cart.render();
+          if (page === 'reviews') Reviews.renderPage();
+          if (page === 'account') Account.render();
+          if (page === 'store')   { Store.renderProducts(); Reviews.renderHome(); }
+          if (page === 'admin' && Auth.isStaff()) Dashboard.render();
+
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showAdminGate() {
+          document.getElementById('adminGate').classList.remove('hidden');
+          document.getElementById('adminContent').classList.add('hidden');
+          document.getElementById('page-admin').classList.add('is-active');
+        }
+
+        function showAdminDashboard() {
+          document.getElementById('adminGate').classList.add('hidden');
+          document.getElementById('adminContent').classList.remove('hidden');
+          document.getElementById('page-admin').classList.add('is-active');
+          Dashboard.render();
+        }
+
+        function scrollToProducts() {
+          go('store');
+          setTimeout(() => {
+            const el = document.getElementById('productsGrid');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 80);
+        }
+
+        return { go, scrollToProducts, showAdminDashboard };
+      })();
+
+      /* ============================================================
+         MODULE: Store (customer-facing)
+         ============================================================ */
+      const Store = (() => {
+        const { money, escapeHTML } = Utils;
+
+        function mediaHTML(p) {
+          if (p.image) {
+            return `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)} ${escapeHTML(p.size)}" loading="lazy">`;
+          }
+          const label = String(p.name || '').startsWith('MUNEELA') ? 'MUNEELA' : 'SURFEELA';
+          return `<div class="pack ${escapeHTML(p.color || '')}" style="${p.color === 'powder' ? '' : 'transform: scale(0.86);'}">
+            <div class="pack__label">${label}<small>${escapeHTML(p.size)} · CLEAN CARE</small></div>
+          </div>`;
+        }
+
+        function cardHTML(p) {
+          const sc = (p.stock || 0) <= 10 ? 'product-card__stock--low' : '';
+          return `<article class="product-card">
+            <div class="product-card__media">
+              <span class="tag product-card__badge">${escapeHTML(p.tag || 'SURFEELA')}</span>
+              ${mediaHTML(p)}
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">${escapeHTML(p.name)}</h3>
+              <div class="product-card__meta">${escapeHTML(p.size)} · ${escapeHTML(p.category)}</div>
+              <div class="product-card__rating">★ ${Number(p.rating || 0).toFixed(1)}
+                <span class="text-muted text-xs">(${p.reviews || 0} reviews)</span></div>
+              <div class="product-card__footer">
+                <div class="product-card__price">${money(p.price)} <small>/ pack</small></div>
+                <div class="product-card__stock ${sc}">${p.stock > 0 ? 'In stock' : 'Sold out'}</div>
+              </div>
+              <button class="btn btn--block product-card__cta"
+                ${p.stock <= 0 ? 'disabled' : ''} onclick="Cart.add('${escapeHTML(p.id)}')">
+                ＋ Add to bag</button>
+            </div>
+          </article>`;
+        }
+
+        function renderProducts() {
+          const q = (document.getElementById('productSearch')?.value || '').toLowerCase();
+          const cat = document.getElementById('categoryFilter')?.value || 'All';
+          const sort = document.getElementById('sortFilter')?.value || 'featured';
+
+          let list = DataStore.products.filter(p =>
+            p.published !== false &&
+            (cat === 'All' || p.category === cat) &&
+            `${p.name} ${p.size} ${p.category}`.toLowerCase().includes(q));
+
+          if (sort === 'low')    list.sort((a,b) => a.price - b.price);
+          if (sort === 'high')   list.sort((a,b) => b.price - a.price);
+          if (sort === 'rating') list.sort((a,b) => b.rating - a.rating);
+
+          const grid = document.getElementById('productsGrid');
+          grid.innerHTML = list.length
+            ? list.map(cardHTML).join('')
+            : '<div class="empty" style="grid-column:1/-1"><p>No products found.</p></div>';
+        }
+
+        function setCategory(cat) {
+          const f = document.getElementById('categoryFilter');
+          if (f) f.value = cat;
+          renderProducts();
+          document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        return { renderProducts, setCategory };
+      })();
+
+      /* ============================================================
+         MODULE: Cart
+         ============================================================ */
+      const Cart = (() => {
+        const { money, escapeHTML } = Utils;
+
+        function updateCount() {
+          const c = DataStore.cart.reduce((n,r) => n + r.qty, 0);
+          const el = document.getElementById('cartCount');
+          if (el) el.textContent = c;
+        }
+
+        function add(id) {
+          const p = DataStore.products.find(x => String(x.id) === String(id));
+          if (!p || p.stock < 1) { Toast.show('Out of stock.'); return; }
+          const row = DataStore.cart.find(r => String(r.id) === String(id));
+          if (row) row.qty = Math.min(row.qty + 1, p.stock);
+          else DataStore.cart.push({ id: String(id), qty: 1 });
+          DataStore.persistCart();
+          updateCount();
+          Toast.show('Added to your bag');
+        }
+
+        function changeQty(id, d) {
+          const row = DataStore.cart.find(r => String(r.id) === String(id));
+          const p = DataStore.products.find(x => String(x.id) === String(id));
+          if (!row || !p) return;
+          row.qty = Math.min(p.stock, Math.max(1, row.qty + d));
+          DataStore.persistCart();
+          render();
+          updateCount();
+        }
+
+        function remove(id) {
+          DataStore.cart = DataStore.cart.filter(r => String(r.id) !== String(id));
+          DataStore.persistCart();
+          render();
+          updateCount();
+        }
+
+        function render() {
+          const c = document.getElementById('cartContent');
+          if (!DataStore.cart.length) {
+            c.innerHTML = `<div class="panel empty"><p>Your bag is empty.</p>
+              <button class="btn" onclick="App.go('store')">Browse products</button></div>`;
+            return;
+          }
+
+          const subtotal = DataStore.cart.reduce((s, row) => {
+            const p = DataStore.products.find(x => String(x.id) === String(row.id));
+            return s + (p ? p.price * row.qty : 0);
+          }, 0);
+
+          c.innerHTML = `<div class="cart-layout">
+            <div class="panel" style="padding:0;overflow:hidden;">
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th><th></th></tr></thead>
+                <tbody>${DataStore.cart.map(row => {
+                  const p = DataStore.products.find(x => String(x.id) === String(row.id));
+                  if (!p) return '';
+                  return `<tr>
+                    <td><strong>${escapeHTML(p.name)}</strong><br>
+                      <small class="text-muted">${escapeHTML(p.size)}</small></td>
+                    <td>${money(p.price)}</td>
+                    <td><div class="qty-control">
+                      <button class="btn btn--outline btn--sm" onclick="Cart.changeQty('${escapeHTML(p.id)}',-1)">−</button>
+                      <span class="qty-control__value">${row.qty}</span>
+                      <button class="btn btn--outline btn--sm" onclick="Cart.changeQty('${escapeHTML(p.id)}',1)">+</button>
+                    </div></td>
+                    <td><strong>${money(p.price * row.qty)}</strong></td>
+                    <td><button class="btn btn--outline btn--sm" onclick="Cart.remove('${escapeHTML(p.id)}')">×</button></td>
+                  </tr>`;
+                }).join('')}</tbody>
+              </table></div>
+            </div>
+            <div class="panel">
+              <h3>Order summary</h3>
+              <div class="cart-summary__row"><span>Subtotal</span><strong>${money(subtotal)}</strong></div>
+              <div class="cart-summary__row"><span>Delivery</span><span>Confirmed by company</span></div>
+              <div class="cart-summary__row cart-summary__row--total">
+                <span>Total</span><span>${money(subtotal)}</span></div>
+              <button class="btn btn--block" style="margin-top:var(--sp-4);" onclick="Checkout.open()">Continue to checkout</button>
+              <p class="text-xs text-muted" style="margin-top:var(--sp-4);">
+                Cash on Delivery. Demo only — no real charge.</p>
+            </div>
+          </div>`;
+        }
+
+        return { add, changeQty, remove, render, updateCount };
+      })();
+
+      /* ============================================================
+         MODULE: Checkout
+         ============================================================ */
+      const Checkout = (() => {
+        const { money } = Utils;
+
+        function open() {
+          const subtotal = DataStore.cart.reduce((s, row) => {
+            const p = DataStore.products.find(x => String(x.id) === String(row.id));
+            return s + (p ? p.price * row.qty : 0);
+          }, 0);
+
+          Modal.open('Checkout', `
+            <form onsubmit="Checkout.submit(event)">
+              <div class="form-grid">
+                <div class="field"><label class="field__label">Full name *</label>
+                  <input class="input" name="name" required autocomplete="name"></div>
+                <div class="field"><label class="field__label">Phone *</label>
+                  <input class="input" name="phone" required pattern="[0-9+ ()-]{7,20}"></div>
+                <div class="field"><label class="field__label">City *</label>
+                  <input class="input" name="city" required></div>
+                <div class="field"><label class="field__label">Payment</label>
+                  <select class="select" name="payment">
+                    <option>Cash on Delivery</option>
+                    <option>WhatsApp order</option>
+                  </select></div>
+                <div class="field field--full"><label class="field__label">Address *</label>
+                  <textarea class="textarea" name="address" rows="2" required></textarea></div>
+                <div class="field field--full"><label class="field__label">Notes</label>
+                  <textarea class="textarea" name="notes" rows="2"></textarea></div>
+              </div>
+              <div class="notice notice--warning" style="margin-top:var(--sp-4);">
+                Demo total: ${money(subtotal)}. No real payment is taken.
+              </div>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--outline" onclick="Modal.close()">Cancel</button>
+                <button class="btn" type="submit">Place order</button>
+              </div>
+            </form>`);
+        }
+
+        async function submit(event) {
+          event.preventDefault();
+          const f = new FormData(event.target);
+          const total = DataStore.cart.reduce((s, row) => {
+            const p = DataStore.products.find(x => String(x.id) === String(row.id));
+            return s + (p ? p.price * row.qty : 0);
+          }, 0);
+
+          try {
+            const id = await DataStore.createOrder({
+              customer: f.get('name'),
+              city: f.get('city'),
+              date: new Date().toISOString().slice(0,10),
+              items: DataStore.cart.reduce((n,x) => n + x.qty, 0),
+              total,
+              status: 'Pending',
+              payment: f.get('payment'),
+              phone: f.get('phone'),
+              address: f.get('address'),
+              notes: f.get('notes')
+            });
+
+            await DataStore.upsertCustomer(f.get('name'), {
+              city: f.get('city'), phone: f.get('phone'), total
+            });
+
+            DataStore.cart = [];
+            DataStore.persistCart();
+            Cart.updateCount();
+            Modal.close();
+            App.go('account');
+            Toast.show(`Order placed (ID: ${id}).`);
+          } catch (err) {
+            Toast.show('Order failed: ' + err.message);
+          }
+        }
+
+        return { open, submit };
+      })();
+
+      /* ============================================================
+         MODULE: Reviews
+         ============================================================ */
+      const Reviews = (() => {
+        const { escapeHTML } = Utils;
+
+        function renderHome() {
+          const approved = DataStore.reviews.filter(r => r.status === 'Approved').slice(0, 3);
+          const c = document.getElementById('homeReviews');
+          c.innerHTML = approved.length
+            ? approved.map(r => `<div class="review-item">
+                <div class="review-item__stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}
+                  <span class="text-muted text-xs">${r.verified ? 'Verified' : 'Demo'}</span></div>
+                <div class="review-item__product">${escapeHTML(r.product)}</div>
+                <p class="review-item__text">${escapeHTML(r.text)}</p>
+                <div class="review-item__meta">${escapeHTML(r.name)} · ${escapeHTML(r.date || '')}</div>
+              </div>`).join('')
+            : '<div class="empty"><p>No approved reviews yet.</p></div>';
+        }
+
+        function renderPage() {
+          renderHome();
+          const c = document.getElementById('reviewsContent');
+          c.innerHTML = DataStore.reviews.map(r => `
+            <div class="panel">
+              <div class="review-item__stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}
+                <span class="text-muted text-xs">${r.verified ? 'Verified' : 'Unverified'}</span></div>
+              <h3 style="font-size:var(--fs-base);margin-top:var(--sp-2);">${escapeHTML(r.product)}</h3>
+              <p class="text-sm text-muted">${escapeHTML(r.text)}</p>
+              <small class="text-xs text-muted">${escapeHTML(r.name)} · ${escapeHTML(r.date || '')}</small>
+            </div>`).join('') || '<div class="panel empty"><p>No reviews yet.</p></div>';
+        }
+
+        function openForm() {
+          Modal.open('Write a review', `
+            <form onsubmit="Reviews.submit(event)">
+              <div class="form-grid">
+                <div class="field field--full"><label class="field__label">Product *</label>
+                  <select class="select" name="product">
+                    ${DataStore.products.map(p => `<option>${escapeHTML(p.name)} ${escapeHTML(p.size)}</option>`).join('')}
+                  </select></div>
+                <div class="field"><label class="field__label">Your name *</label>
+                  <input class="input" name="name" required></div>
+                <div class="field"><label class="field__label">Rating</label>
+                  <select class="select" name="rating">
+                    <option value="5">5 stars</option><option value="4">4 stars</option>
+                    <option value="3">3 stars</option><option value="2">2 stars</option>
+                    <option value="1">1 star</option></select></div>
+                <div class="field field--full"><label class="field__label">Feedback *</label>
+                  <textarea class="textarea" name="text" rows="3" required minlength="5"></textarea></div>
+              </div>
+              <div class="notice notice--warning" style="margin-top:var(--sp-4);">
+                Saved as unverified content awaiting moderation.
+              </div>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--outline" onclick="Modal.close()">Cancel</button>
+                <button class="btn">Submit</button>
+              </div>
+            </form>`);
+        }
+
+        async function submit(event) {
+          event.preventDefault();
+          const f = new FormData(event.target);
+          try {
+            await DataStore.createReview({
+              product: f.get('product'),
+              name: f.get('name'),
+              rating: Number(f.get('rating')),
+              date: new Date().toISOString().slice(0,10),
+              text: f.get('text'),
+              status: 'Pending',
+              verified: false
+            });
+            Modal.close();
+            renderPage();
+            Toast.show('Review submitted for moderation.');
+          } catch (err) { Toast.show('Failed: ' + err.message); }
+        }
+
+        return { renderHome, renderPage, openForm, submit };
+      })();
+
+      /* ============================================================
+         MODULE: Account (customer-only view of own orders)
+         ============================================================ */
+      const Account = (() => {
+        const { money, escapeHTML } = Utils;
+
+        function render() {
+          const container = document.getElementById('accountContent');
+          if (!Auth.user) {
+            container.innerHTML = `<div class="access-denied">
+              <div class="access-denied__icon">🔒</div>
+              <h2>Please sign in</h2>
+              <p>Sign in to view your orders.</p>
+              <button class="btn" onclick="Auth.openLogin()">Sign in</button>
+            </div>`;
+            return;
+          }
+
+          const myOrders = DataStore.orders; // already filtered to user's uid by DataStore.loadOrders()
+
+          container.innerHTML = `
+            <div class="section-head">
+              <div>
+                <h2 class="section-head__title">My account</h2>
+                <p class="section-head__subtitle">Signed in as ${escapeHTML(Auth.user.email || '')}</p>
+              </div>
+              <button class="btn btn--outline" onclick="Auth.signOut()">Sign out</button>
+            </div>
+
+            <div class="panel" style="margin-bottom:var(--sp-6);">
+              <div class="panel__head"><div>
+                <h3 class="panel__title">My orders</h3>
+                <p class="panel__subtitle">You can only see orders placed with your account.</p>
+              </div></div>
+              ${myOrders.length ? `
+                <div class="table-wrap"><table class="table">
+                  <thead><tr><th>Order</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+                  <tbody>${myOrders.map(o => `<tr>
+                    <td><strong>${escapeHTML(o.id)}</strong></td>
+                    <td>${escapeHTML(o.date || '')}</td>
+                    <td>${o.items || 0}</td>
+                    <td>${money(o.total)}</td>
+                    <td>${StatusBadge(o.status)}</td>
+                  </tr>`).join('')}</tbody>
+                </table></div>
+              ` : '<div class="empty"><p>You have no orders yet.</p></div>'}
+            </div>
+
+            <div class="panel">
+              <h3 class="panel__title">Need help?</h3>
+              <p class="text-sm text-muted" style="margin-top:var(--sp-2);">
+                Contact us at 03709321120 or surfeela@gmail.com.
+              </p>
+            </div>
+          `;
+        }
+
+        return { render };
+      })();
+
+      /* ============================================================
+         MODULE: Dashboard (staff area — role-gated)
+         ============================================================ */
+      const Dashboard = (() => {
+        let currentTab = 'overview';
+
+        function render() {
+          if (!Auth.isStaff()) { App.showAdminGate(); return; }
+
+          // Sidebar role chip
+          const roleEl = document.getElementById('sidebarRole');
+          if (roleEl) roleEl.textContent = ROLE_LABELS[Auth.role] || Auth.role;
+
+          // Build sidebar links based on role
+          const navEl = document.getElementById('sidebarNav');
+          const allowedTabs = ROLE_TABS[Auth.role] || [];
+          const tabLabels = {
+            overview: '◫ Overview', orders: '▤ Orders', products: '▦ Products',
+            inventory: '▧ Inventory', customers: '♙ Customers', reviews: '☆ Reviews',
+            sales: '↗ Sales & reports', staff: '♧ Staff & roles', settings: '⚙ Settings'
+          };
+          navEl.innerHTML = allowedTabs.map(tab => `
+            <button class="sidebar__link ${tab === currentTab ? 'is-active' : ''}"
+              data-tab="${tab}" onclick="Dashboard.showTab('${tab}')">
+              ${tabLabels[tab] || tab}
+            </button>
+          `).join('');
+
+          // Make sure currentTab is allowed, otherwise fall back to first allowed
+          if (!allowedTabs.includes(currentTab)) {
+            currentTab = allowedTabs[0];
+          }
+          showTab(currentTab);
+        }
+
+        function showTab(tab) {
+          if (!Auth.canSeeTab(tab)) {
+            Toast.show('You do not have access to this section.');
+            return;
+          }
+          currentTab = tab;
+          document.querySelectorAll('.sidebar__link[data-tab]').forEach(b => {
+            b.classList.toggle('is-active', b.dataset.tab === tab);
+          });
+
+          const titles = {
+            overview: ['Good evening 👋', "Here's what's happening with your store today."],
+            orders:   ['Orders', 'Review and manage customer orders.'],
+            products: ['Products', 'Manage your catalogue and pricing.'],
+            inventory:['Inventory', 'Track stock levels.'],
+            customers:['Customers', 'Customer profiles.'],
+            reviews:  ['Reviews', 'Moderate customer feedback.'],
+            sales:    ['Sales & reports', 'Review performance.'],
+            staff:    ['Staff & roles', 'Manage team access.'],
+            settings: ['Settings', 'Company preferences.']
+          };
+          document.getElementById('dashTitle').textContent = titles[tab][0];
+          document.getElementById('dashSubtitle').textContent = titles[tab][1];
+
+          // Only show "New order" button on orders tab
+          const actions = document.getElementById('dashActions');
+          actions.innerHTML = (tab === 'orders' && Auth.isStaff())
+            ? `<button class="btn" onclick="Orders.openForm()">＋ New order</button>`
+            : '';
+
+          const renderers = {
+            overview:  () => Overview.render(),
+            orders:    () => Orders.render(),
+            products:  () => ProductsAdmin.render(),
+            inventory: () => Inventory.render(),
+            customers: () => Customers.render(),
+            reviews:   () => ReviewsAdmin.render(),
+            sales:     () => Sales.render(),
+            staff:     () => Staff.render(),
+            settings:  () => Settings.render()
+          };
+          if (renderers[tab]) renderers[tab]();
+        }
+
+        return { render, showTab, get currentTab() { return currentTab; } };
+      })();
+
+      /* ============================================================
+         MODULE: Overview (dashboard home)
+         ============================================================ */
+      const Overview = (() => {
+        const { money, escapeHTML } = Utils;
+
+        function render() {
+          const delivered = DataStore.orders.filter(o => o.status === 'Delivered');
+          const sales = delivered.reduce((n,o) => n + o.total, 0);
+          const pending = DataStore.orders.filter(o => o.status === 'Pending').length;
+          const low = DataStore.products.filter(p => p.stock <= 10).length;
+
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="kpi-grid">
+              <div class="kpi"><div class="kpi__top">Delivered sales <span class="kpi__icon">↗</span></div>
+                <div class="kpi__value">${money(sales)}</div>
+                <div class="kpi__hint">${delivered.length} orders</div></div>
+              <div class="kpi"><div class="kpi__top">Total orders <span class="kpi__icon">▤</span></div>
+                <div class="kpi__value">${DataStore.orders.length}</div>
+                <div class="kpi__hint">${pending} pending</div></div>
+              <div class="kpi"><div class="kpi__top">Products <span class="kpi__icon">▦</span></div>
+                <div class="kpi__value">${DataStore.products.filter(p => p.published !== false).length}</div>
+                <div class="kpi__hint">${low} low-stock</div></div>
+              <div class="kpi"><div class="kpi__top">Staff role <span class="kpi__icon">👤</span></div>
+                <div class="kpi__value" style="font-size:var(--fs-lg);">${ROLE_LABELS[Auth.role] || Auth.role}</div>
+                <div class="kpi__hint">${escapeHTML(Auth.user?.email || '')}</div></div>
+            </div>
+
+            <div class="panel">
+              <div class="panel__head"><div>
+                <h3 class="panel__title">Recent orders</h3>
+                <p class="panel__subtitle">Latest activity</p>
+              </div></div>
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr></thead>
+                <tbody>${DataStore.orders.slice(0,5).map(o => `<tr>
+                  <td><strong>${escapeHTML(o.id)}</strong></td>
+                  <td>${escapeHTML(o.customer)}</td>
+                  <td>${escapeHTML(o.date || '')}</td>
+                  <td>${money(o.total)}</td>
+                  <td>${StatusBadge(o.status)}</td>
+                </tr>`).join('') || '<tr><td colspan="5" class="empty"><p>No orders yet.</p></td></tr>'}</tbody>
+              </table></div>
+            </div>
+          `;
+        }
+
+        return { render };
+      })();
+
+      /* ============================================================
+         MODULE: Orders (staff)
+         ============================================================ */
+      const Orders = (() => {
+        const { money, escapeHTML } = Utils;
+        const STATUSES = ['Pending','Confirmed','Processing','Dispatched','Delivered','Cancelled','Returned'];
+
+        function render() {
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="panel">
+              <div class="filter-bar" style="margin-bottom:var(--sp-4);">
+                <input type="search" class="input" id="orderSearch" placeholder="Search order, customer…"
+                  oninput="Orders.filter()">
+                <select class="select" id="orderStatusFilter" onchange="Orders.filter()">
+                  <option value="All">All statuses</option>
+                  ${STATUSES.map(s => `<option>${s}</option>`).join('')}
+                </select>
+              </div>
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Items</th>
+                  <th>Total</th><th>Payment</th><th>Status</th><th>Action</th></tr></thead>
+                <tbody id="ordersRows">${rows(DataStore.orders)}</tbody>
+              </table></div>
+            </div>`;
+        }
+
+        function rows(list) {
+          return list.map(o => `<tr>
+            <td><strong>${escapeHTML(o.id)}</strong></td>
+            <td>${escapeHTML(o.customer)}<br>
+              <small class="text-muted">${escapeHTML(o.city || '')}</small></td>
+            <td>${escapeHTML(o.date || '')}</td>
+            <td>${o.items || 0}</td>
+            <td><strong>${money(o.total)}</strong></td>
+            <td>${escapeHTML(o.payment || 'COD')}</td>
+            <td>${StatusBadge(o.status)}</td>
+            <td><button class="btn btn--outline btn--sm" onclick="Orders.openEdit('${escapeHTML(o.id)}')">Manage</button></td>
+          </tr>`).join('') || '<tr><td colspan="8" class="empty"><p>No orders match.</p></td></tr>';
+        }
+
+        function filter() {
+          const q = (document.getElementById('orderSearch').value || '').toLowerCase();
+          const s = document.getElementById('orderStatusFilter').value;
+          document.getElementById('ordersRows').innerHTML = rows(
+            DataStore.orders.filter(o =>
+              (s === 'All' || o.status === s) &&
+              `${o.id} ${o.customer} ${o.city}`.toLowerCase().includes(q)
+            )
+          );
+        }
+
+        function openForm() {
+          if (!Auth.isStaff()) return;
+          Modal.open('Create order', `
+            <form onsubmit="Orders.create(event)">
+              <div class="form-grid">
+                <div class="field"><label class="field__label">Customer *</label>
+                  <input class="input" name="customer" required></div>
+                <div class="field"><label class="field__label">City *</label>
+                  <input class="input" name="city" required></div>
+                <div class="field"><label class="field__label">Items *</label>
+                  <input class="input" name="items" type="number" min="1" value="1" required></div>
+                <div class="field"><label class="field__label">Total *</label>
+                  <input class="input" name="total" type="number" min="0" required></div>
+                <div class="field"><label class="field__label">Status</label>
+                  <select class="select" name="status">
+                    ${STATUSES.map(s => `<option>${s}</option>`).join('')}</select></div>
+                <div class="field"><label class="field__label">Payment</label>
+                  <select class="select" name="payment">
+                    <option>Cash on Delivery</option><option>Easypaisa</option><option>Bank transfer</option>
+                  </select></div>
+              </div>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--outline" onclick="Modal.close()">Cancel</button>
+                <button class="btn">Create</button>
+              </div>
+            </form>`);
+        }
+
+        async function create(event) {
+          event.preventDefault();
+          const f = new FormData(event.target);
+          try {
+            await DataStore.createOrder({
+              customer: f.get('customer'),
+              city: f.get('city'),
+              date: new Date().toISOString().slice(0,10),
+              items: Number(f.get('items')),
+              total: Number(f.get('total')),
+              status: f.get('status'),
+              payment: f.get('payment')
+            });
+            await DataStore.log('order.create', { customer: f.get('customer') });
+            Modal.close();
+            Dashboard.showTab('orders');
+            Toast.show('Order created.');
+          } catch (err) { Toast.show('Failed: ' + err.message); }
+        }
+
+        function openEdit(id) {
+          const o = DataStore.orders.find(x => String(x.id) === String(id));
+          if (!o) return;
+          Modal.open('Manage order', `
+            <div class="form-grid">
+              <div class="field"><label class="field__label">Customer</label>
+                <input class="input" value="${escapeHTML(o.customer)}" disabled></div>
+              <div class="field"><label class="field__label">Total</label>
+                <input class="input" value="${money(o.total)}" disabled></div>
+              <div class="field field--full"><label class="field__label">Status</label>
+                <select class="select" id="editOrderStatus">
+                  ${STATUSES.map(s => `<option ${o.status === s ? 'selected' : ''}>${s}</option>`).join('')}
+                </select></div>
+            </div>
+            <div class="modal__actions">
+              <button class="btn btn--outline" onclick="Modal.close()">Close</button>
+              <button class="btn" onclick="Orders.saveStatus('${escapeHTML(id)}')">Save</button>
+            </div>`);
+        }
+
+        async function saveStatus(id) {
+          try {
+            await DataStore.updateOrder(id, { status: document.getElementById('editOrderStatus').value });
+            await DataStore.log('order.update', { id });
+            Modal.close();
+            Dashboard.showTab('orders');
+            Toast.show('Order updated.');
+          } catch (err) { Toast.show('Failed: ' + err.message); }
+        }
+
+        return { render, filter, openForm, create, openEdit, saveStatus };
+      })();
+
+      /* ============================================================
+         MODULE: ProductsAdmin (admin / inventory)
+         ============================================================ */
+      const ProductsAdmin = (() => {
+        const { money, escapeHTML, formatBytes } = Utils;
+        const MAX_BYTES = 2 * 1024 * 1024;
+        const TYPES = ['image/jpeg','image/png','image/webp','image/gif'];
+        let draftImage = null, draftName = '', draftSize = 0, draftNew = false;
+
+        function render() {
+          const canEdit = Auth.isAdmin() || Auth.role === ROLES.INVENTORY;
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="panel">
+              <div class="filter-bar" style="margin-bottom:var(--sp-4);">
+                <input type="search" class="input" id="adminProductSearch"
+                  placeholder="Search product or SKU…" oninput="ProductsAdmin.filter()">
+                ${canEdit ? `<button class="btn" onclick="ProductsAdmin.openForm()">＋ Add product</button>` : ''}
+              </div>
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Image</th><th>Product</th><th>SKU</th><th>Category</th>
+                  <th>Retail</th><th>Stock</th><th>Visibility</th><th>Actions</th></tr></thead>
+                <tbody id="adminProductRows">${rows(DataStore.products)}</tbody>
+              </table></div>
+            </div>`;
+        }
+
+        function thumb(p) {
+          if (p.image) return `<img src="${escapeHTML(p.image)}" alt=""
+            style="width:44px;height:44px;object-fit:cover;border-radius:var(--r-sm);border:1px solid var(--ink-100);">`;
+          return `<div style="width:44px;height:44px;border-radius:var(--r-sm);background:var(--brand-100);display:grid;place-items:center;font-size:10px;font-weight:800;color:var(--brand-700);">N/A</div>`;
+        }
+
+        function rows(list) {
+          const canEdit = Auth.isAdmin() || Auth.role === ROLES.INVENTORY;
+          return list.map(p => `<tr>
+            <td>${thumb(p)}</td>
+            <td><strong>${escapeHTML(p.name)}</strong><br>
+              <small class="text-muted">${escapeHTML(p.size)}</small></td>
+            <td>${escapeHTML(p.sku || '')}</td>
+            <td>${escapeHTML(p.category)}</td>
+            <td>${money(p.price)}</td>
+            <td class="${p.stock <= 10 ? 'text-danger font-bold' : ''}">${p.stock}</td>
+            <td>${p.published === false
+              ? '<span class="status status--cancelled">Hidden</span>'
+              : '<span class="status">Published</span>'}</td>
+            <td>${canEdit
+              ? `<button class="btn btn--outline btn--sm" onclick="ProductsAdmin.openForm('${escapeHTML(p.id)}')">Edit</button>`
+              : '<span class="text-xs text-muted">Read only</span>'}</td>
+          </tr>`).join('');
+        }
+
+        function filter() {
+          const q = document.getElementById('adminProductSearch').value.toLowerCase();
+          document.getElementById('adminProductRows').innerHTML = rows(
+            DataStore.products.filter(p => `${p.name} ${p.sku} ${p.category}`.toLowerCase().includes(q))
+          );
+        }
+
+        async function openForm(id) {
+          if (!Auth.isAdmin() && Auth.role !== ROLES.INVENTORY) {
+            Toast.show('You do not have permission to edit products.');
+            return;
+          }
+          const p = DataStore.products.find(x => String(x.id) === String(id)) || {
+            id: null, name:'', size:'', category:'Washing Powder', price:0,
+            wholesale:0, stock:0, color:'powder', tag:'', sku:'',
+            description:'', cost:0, published:true, image:''
+          };
+          draftImage = p.image || null;
+          draftName = ''; draftSize = 0; draftNew = false;
+
+          Modal.open(id ? 'Edit product' : 'Add product', `
+            <form onsubmit="ProductsAdmin.save(event, ${id ? `'${escapeHTML(id)}'` : 'null'})">
+              <div class="form-grid">
+                <div class="field field--full">
+                  <label class="field__label">Product image</label>
+                  <div id="uploadZone" class="upload-zone">
+                    <div class="upload-zone__icon">⬆</div>
+                    <div class="upload-zone__title">Click or drag to upload</div>
+                    <div class="upload-zone__hint">JPEG/PNG/WebP/GIF · max 2 MB</div>
+                    <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp,image/gif">
+                  </div>
+                  <div id="uploadPreview" class="upload-preview hidden" style="margin-top:var(--sp-3);"></div>
+                </div>
+                <div class="field field--full"><label class="field__label">Product name *</label>
+                  <input class="input" name="name" value="${escapeHTML(p.name)}" required></div>
+                <div class="field"><label class="field__label">SKU *</label>
+                  <input class="input" name="sku" value="${escapeHTML(p.sku)}" required></div>
+                <div class="field"><label class="field__label">Size *</label>
+                  <input class="input" name="size" value="${escapeHTML(p.size)}" required></div>
+                <div class="field"><label class="field__label">Category</label>
+                  <select class="select" name="category">
+                    ${['Washing Powder','Dishwashing','Liquid Cleaners','Home Care']
+                      .map(c => `<option ${p.category === c ? 'selected' : ''}>${c}</option>`).join('')}
+                  </select></div>
+                <div class="field"><label class="field__label">Retail price (Rs)</label>
+                  <input class="input" name="price" type="number" min="0" value="${p.price}" required></div>
+                <div class="field"><label class="field__label">Wholesale (Rs)</label>
+                  <input class="input" name="wholesale" type="number" min="0" value="${p.wholesale || 0}"></div>
+                <div class="field"><label class="field__label">Cost (Rs)</label>
+                  <input class="input" name="cost" type="number" min="0" value="${p.cost || 0}"></div>
+                <div class="field"><label class="field__label">Stock</label>
+                  <input class="input" name="stock" type="number" min="0" value="${p.stock}" required></div>
+                <div class="field"><label class="field__label">Pack style</label>
+                  <select class="select" name="color">
+                    ${['powder','blue','gold'].map(c => `<option ${p.color === c ? 'selected' : ''}>${c}</option>`).join('')}
+                  </select></div>
+                <div class="field"><label class="field__label">Tag</label>
+                  <input class="input" name="tag" value="${escapeHTML(p.tag)}"></div>
+                <div class="field field--full"><label class="field__label">Description</label>
+                  <textarea class="textarea" name="description" rows="2">${escapeHTML(p.description)}</textarea></div>
+                <div class="field"><label class="field__label">Published</label>
+                  <select class="select" name="published">
+                    <option value="true" ${p.published !== false ? 'selected' : ''}>Yes</option>
+                    <option value="false" ${p.published === false ? 'selected' : ''}>No</option>
+                  </select></div>
+              </div>
+              <div class="modal__actions">
+                <button type="button" class="btn btn--outline" onclick="Modal.close()">Cancel</button>
+                <button class="btn" type="submit">Save</button>
+              </div>
+            </form>`);
+
+          wireUpload();
+          if (draftImage) renderPreview();
+        }
+
+        function wireUpload() {
+          const z = document.getElementById('uploadZone');
+          const i = document.getElementById('imageInput');
+          if (!z || !i) return;
+          z.addEventListener('click', e => { if (e.target !== i) i.click(); });
+          z.addEventListener('dragover', e => { e.preventDefault(); z.classList.add('is-dragover'); });
+          z.addEventListener('dragleave', () => z.classList.remove('is-dragover'));
+          z.addEventListener('drop', e => {
+            e.preventDefault(); z.classList.remove('is-dragover');
+            const f = e.dataTransfer.files?.[0]; if (f) handle(f);
+          });
+          i.addEventListener('change', e => { const f = e.target.files?.[0]; if (f) handle(f); });
+        }
+
+        function handle(file) {
+          if (!TYPES.includes(file.type)) { Toast.show('Unsupported file type.'); return; }
+          if (file.size > MAX_BYTES) { Toast.show('Image too large (max 2 MB).'); return; }
+          const r = new FileReader();
+          r.onload = ev => {
+            draftImage = ev.target.result;
+            draftName = file.name;
+            draftSize = file.size;
+            draftNew = true;
+            renderPreview();
+          };
+          r.onerror = () => Toast.show('Could not read file.');
+          r.readAsDataURL(file);
+        }
+
+        function renderPreview() {
+          const z = document.getElementById('uploadZone');
+          const p = document.getElementById('uploadPreview');
+          if (!z || !p) return;
+          if (!draftImage) { z.classList.remove('hidden'); p.classList.add('hidden'); p.innerHTML = ''; return; }
+          z.classList.add('hidden'); p.classList.remove('hidden');
+          p.innerHTML = `<img src="${draftImage}" alt="Preview">
+            <div class="upload-preview__info">
+              <div class="upload-preview__name">${escapeHTML(draftName || 'Existing image')}</div>
+              <div class="upload-preview__meta">${draftSize ? formatBytes(draftSize) : 'Saved image'}</div>
+            </div>
+            <button type="button" class="btn btn--outline btn--sm" onclick="ProductsAdmin.clearImage()">Remove</button>`;
+        }
+
+        function clearImage() {
+          draftImage = null; draftName = ''; draftSize = 0; draftNew = false;
+          const i = document.getElementById('imageInput'); if (i) i.value = '';
+          renderPreview();
+        }
+
+        async function save(event, id) {
+          event.preventDefault();
+          if (!Auth.isAdmin() && Auth.role !== ROLES.INVENTORY) {
+            Toast.show('Permission denied.'); return;
+          }
+          const f = new FormData(event.target);
+          let imageUrl = draftImage || '';
+
+          if (draftNew && draftImage && draftImage.startsWith('data:')) {
+            try {
+              const { storage, sdk } = window.Firebase;
+              const blob = await (await fetch(draftImage)).blob();
+              const ext = blob.type.split('/')[1] || 'jpg';
+              const path = `products/${id || 'new_' + Date.now()}.${ext}`;
+              const ref = sdk.storageRef(storage, path);
+              Toast.show('Uploading image…');
+              await sdk.uploadBytes(ref, blob);
+              imageUrl = await sdk.getDownloadURL(ref);
+            } catch (err) {
+              Toast.show('Image upload failed: ' + err.message); return;
+            }
+          }
+
+          const data = {
+            name: f.get('name'), sku: f.get('sku'), size: f.get('size'),
+            category: f.get('category'), price: Number(f.get('price')),
+            wholesale: Number(f.get('wholesale')), cost: Number(f.get('cost')),
+            stock: Number(f.get('stock')), color: f.get('color'), tag: f.get('tag'),
+            description: f.get('description'),
+            published: f.get('published') === 'true',
+            image: imageUrl, rating: 4.5, reviews: 0
+          };
+
+          try {
+            if (id) await DataStore.updateProduct(id, data);
+            else     await DataStore.createProduct(data);
+            await DataStore.log(id ? 'product.update' : 'product.create', { id, name: data.name });
+            Modal.close();
+            draftImage = null; draftNew = false;
+            Dashboard.showTab('products');
+            Toast.show('Product saved.');
+          } catch (err) { Toast.show('Save failed: ' + err.message); }
+        }
+
+        return { render, filter, openForm, save, clearImage };
+      })();
+
+      /* ============================================================
+         MODULE: Inventory
+         ============================================================ */
+      const Inventory = (() => {
+        const { money, escapeHTML } = Utils;
+
+        function render() {
+          const units = DataStore.products.reduce((n,p) => n + p.stock, 0);
+          const low = DataStore.products.filter(p => p.stock <= 10).length;
+          const cost = DataStore.products.reduce((n,p) => n + p.stock * (p.cost || 0), 0);
+
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="kpi-grid">
+              <div class="kpi"><div class="kpi__top">SKUs</div>
+                <div class="kpi__value">${DataStore.products.length}</div></div>
+              <div class="kpi"><div class="kpi__top">Total units</div>
+                <div class="kpi__value">${units.toLocaleString()}</div></div>
+              <div class="kpi"><div class="kpi__top">Low stock</div>
+                <div class="kpi__value">${low}</div></div>
+              <div class="kpi"><div class="kpi__top">Stock cost</div>
+                <div class="kpi__value">${money(cost)}</div></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><div>
+                <h3 class="panel__title">Inventory overview</h3></div></div>
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Product</th><th>SKU</th><th>Stock</th>
+                  <th>Health</th><th>Action</th></tr></thead>
+                <tbody>${DataStore.products.map(p => {
+                  const health = p.stock <= 10
+                    ? '<span class="status status--cancelled">Reorder</span>'
+                    : p.stock <= 25
+                      ? '<span class="status status--pending">Watch</span>'
+                      : '<span class="status">Healthy</span>';
+                  return `<tr>
+                    <td><strong>${escapeHTML(p.name)}</strong><br>
+                      <small class="text-muted">${escapeHTML(p.size)}</small></td>
+                    <td>${escapeHTML(p.sku || '')}</td>
+                    <td class="${p.stock <= 10 ? 'text-danger font-bold' : ''}">${p.stock}</td>
+                    <td>${health}</td>
+                    <td><button class="btn btn--outline btn--sm"
+                      onclick="ProductsAdmin.openForm('${escapeHTML(p.id)}')">Adjust</button></td>
+                  </tr>`;
+                }).join('')}</tbody>
+              </table></div>
+            </div>`;
+        }
+
+        return { render };
+      })();
+
+      /* ============================================================
+         MODULE: Customers (admin only)
+         ============================================================ */
+      const Customers = (() => {
+        const { money, escapeHTML } = Utils;
+
+        function render() {
+          if (!Auth.isAdmin()) {
+            document.getElementById('dashboardContent').innerHTML = `
+              <div class="access-denied">
+                <div class="access-denied__icon">🔒</div>
+                <h2>Restricted</h2>
+                <p>Only administrators can view customer records.</p>
+              </div>`;
+            return;
+          }
+
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="panel">
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Customer</th><th>City</th><th>Phone</th>
+                  <th>Orders</th><th>Total</th><th>Type</th></tr></thead>
+                <tbody>${DataStore.customers.map(c => `<tr>
+                  <td><strong>${escapeHTML(c.name)}</strong></td>
+                  <td>${escapeHTML(c.city || '')}</td>
+                  <td>${escapeHTML(c.phone || '—')}</td>
+                  <td>${c.orders || 0}</td>
+                  <td>${money(c.total || 0)}</td>
+                  <td><span class="status">${(c.orders || 0) >= 6 ? 'Wholesale' : 'Retail'}</span></td>
+                </tr>`).join('') || '<tr><td colspan="6" class="empty"><p>No customers yet.</p></td></tr>'}</tbody>
+              </table></div>
+            </div>`;
+        }
+
+        return { render };
+      })();
+
+      /* ============================================================
+         MODULE: ReviewsAdmin (admin only)
+         ============================================================ */
+      const ReviewsAdmin = (() => {
+        const { escapeHTML } = Utils;
+
+        function render() {
+          if (!Auth.isAdmin()) {
+            document.getElementById('dashboardContent').innerHTML = `
+              <div class="access-denied">
+                <div class="access-denied__icon">🔒</div>
+                <h2>Restricted</h2>
+                <p>Only administrators can moderate reviews.</p>
+              </div>`;
+            return;
+          }
+
+          const total = DataStore.reviews.length;
+          const pending = DataStore.reviews.filter(r => r.status === 'Pending').length;
+          const approved = DataStore.reviews.filter(r => r.status === 'Approved').length;
+
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="kpi-grid">
+              <div class="kpi"><div class="kpi__top">Total</div><div class="kpi__value">${total}</div></div>
+              <div class="kpi"><div class="kpi__top">Pending</div><div class="kpi__value">${pending}</div></div>
+              <div class="kpi"><div class="kpi__top">Approved</div><div class="kpi__value">${approved}</div></div>
+              <div class="kpi"><div class="kpi__top">Awaiting</div><div class="kpi__value">${pending}</div></div>
+            </div>
+            <div class="panel">
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Review</th><th>Customer</th><th>Rating</th>
+                  <th>Status</th><th>Moderation</th></tr></thead>
+                <tbody>${DataStore.reviews.map(r => `<tr>
+                  <td><strong>${escapeHTML(r.product)}</strong><br>
+                    <small class="text-muted">${escapeHTML(r.text)}</small></td>
+                  <td>${escapeHTML(r.name)}</td>
+                  <td><span style="color:#c28a1a;">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span></td>
+                  <td>${StatusBadge(r.status)}</td>
+                  <td>
+                    <button class="btn btn--outline btn--sm"
+                      onclick="ReviewsAdmin.setStatus('${escapeHTML(r.id)}','Approved')">Approve</button>
+                    <button class="btn btn--outline btn--sm"
+                      onclick="ReviewsAdmin.setStatus('${escapeHTML(r.id)}','Hidden')">Hide</button>
+                  </td>
+                </tr>`).join('') || '<tr><td colspan="5" class="empty"><p>No reviews.</p></td></tr>'}</tbody>
+              </table></div>
+            </div>`;
+        }
+
+        async function setStatus(id, status) {
+          if (!Auth.isAdmin()) { Toast.show('Permission denied.'); return; }
+          try {
+            await DataStore.updateReview(id, { status });
+            await DataStore.log('review.moderate', { id, status });
+            ReviewsAdmin.render();
+            Toast.show('Review updated.');
+          } catch (err) { Toast.show('Failed: ' + err.message); }
+        }
+
+        return { render, setStatus };
+      })();
+
+      /* ============================================================
+         MODULE: Sales (admin only)
+         ============================================================ */
+      const Sales = (() => {
+        const { money, escapeHTML } = Utils;
+
+        function render() {
+          if (!Auth.isAdmin()) {
+            document.getElementById('dashboardContent').innerHTML = `
+              <div class="access-denied">
+                <div class="access-denied__icon">🔒</div>
+                <h2>Restricted</h2>
+                <p>Only administrators can view financial reports.</p>
+              </div>`;
+            return;
+          }
+
+          const delivered = DataStore.orders.filter(o => o.status === 'Delivered');
+          const gross = delivered.reduce((n,o) => n + o.total, 0);
+          const units = delivered.reduce((n,o) => n + o.items, 0);
+          const cost = delivered.reduce((n,o) => n + o.items * 110, 0);
+
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="kpi-grid">
+              <div class="kpi"><div class="kpi__top">Delivered</div>
+                <div class="kpi__value">${money(gross)}</div></div>
+              <div class="kpi"><div class="kpi__top">Units</div>
+                <div class="kpi__value">${units}</div></div>
+              <div class="kpi"><div class="kpi__top">Est. cost</div>
+                <div class="kpi__value">${money(cost)}</div></div>
+              <div class="kpi"><div class="kpi__top">Est. profit</div>
+                <div class="kpi__value">${money(gross - cost)}</div></div>
+            </div>
+            <div class="panel">
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Order</th><th>Customer</th><th>Date</th>
+                  <th>Status</th><th>Value</th><th>Delivered</th></tr></thead>
+                <tbody>${DataStore.orders.map(o => `<tr>
+                  <td>${escapeHTML(o.id)}</td>
+                  <td>${escapeHTML(o.customer)}</td>
+                  <td>${escapeHTML(o.date || '')}</td>
+                  <td>${StatusBadge(o.status)}</td>
+                  <td>${money(o.total)}</td>
+                  <td>${o.status === 'Delivered' ? money(o.total) : '—'}</td>
+                </tr>`).join('')}</tbody>
+              </table></div>
+              <div class="notice notice--warning" style="margin-top:var(--sp-4);">
+                Profit is estimated. Not audited accounting.
+              </div>
+            </div>`;
+        }
+
+        return { render };
+      })();
+
+      /* ============================================================
+         MODULE: Staff & Roles (super_admin only)
+         ============================================================ */
+      const Staff = (() => {
+        function render() {
+          if (!Auth.isSuperAdmin()) {
+            document.getElementById('dashboardContent').innerHTML = `
+              <div class="access-denied">
+                <div class="access-denied__icon">🔒</div>
+                <h2>Restricted</h2>
+                <p>Only super admins can manage staff roles.</p>
+              </div>`;
+            return;
+          }
+
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="panel">
+              <div class="panel__head"><div>
+                <h3 class="panel__title">Roles & permissions</h3>
+                <p class="panel__subtitle">
+                  Roles are assigned via Firebase Auth custom claims (server-side).
+                  Ask the project owner to update them.
+                </p>
+              </div></div>
+              <div class="table-wrap"><table class="table">
+                <thead><tr><th>Role</th><th>Products</th><th>Orders</th>
+                  <th>Customers</th><th>Financials</th><th>Settings</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Customer</strong></td><td>View</td><td>Own only</td>
+                    <td>Own only</td><td>None</td><td>None</td></tr>
+                  <tr><td><strong>Salesman</strong></td><td>View</td><td>Manage</td>
+                    <td>View</td><td>None</td><td>None</td></tr>
+                  <tr><td><strong>Inventory</strong></td><td>Edit stock</td><td>View</td>
+                    <td>None</td><td>None</td><td>None</td></tr>
+                  <tr><td><strong>Admin</strong></td><td>Full</td><td>Full</td>
+                    <td>View</td><td>View</td><td>Limited</td></tr>
+                  <tr><td><strong>Super Admin</strong></td><td>Full</td><td>Full</td>
+                    <td>Full</td><td>Full</td><td>Full</td></tr>
+                </tbody>
+              </table></div>
+              <div class="notice notice--info" style="margin-top:var(--sp-4);">
+                Your current role: <strong>${ROLE_LABELS[Auth.role] || Auth.role}</strong>
+              </div>
+            </div>`;
+        }
+
+        return { render };
+      })();
+
+      /* ============================================================
+         MODULE: Settings (admin+)
+         ============================================================ */
+      const Settings = (() => {
+        function render() {
+          if (!Auth.isAdmin()) {
+            document.getElementById('dashboardContent').innerHTML = `
+              <div class="access-denied">
+                <div class="access-denied__icon">🔒</div>
+                <h2>Restricted</h2>
+                <p>Only administrators can change settings.</p>
+              </div>`;
+            return;
+          }
+
+          document.getElementById('dashboardContent').innerHTML = `
+            <div class="panel">
+              <div class="panel__head"><div>
+                <h3 class="panel__title">Company settings</h3>
+                <p class="panel__subtitle">
+                  Real access control is enforced by Firestore rules and Firebase Auth claims.
+                </p>
+              </div></div>
+              <div class="form-grid">
+                <div class="field"><label class="field__label">Company</label>
+                  <input class="input" value="SURFEELA" disabled></div>
+                <div class="field"><label class="field__label">Head office</label>
+                  <input class="input" value="Peshawar, Pakistan" disabled></div>
+                <div class="field"><label class="field__label">Currency</label>
+                  <select class="select"><option>PKR — Pakistani Rupee</option></select></div>
+                <div class="field"><label class="field__label">Payment</label>
+                  <select class="select"><option>Cash on Delivery</option></select></div>
+              </div>
+              <div class="notice notice--info" style="margin-top:var(--sp-4);">
+                To change staff roles: Firebase Console → Authentication → Users → set custom claim <code>role</code>.
+              </div>
+            </div>`;
+        }
+
+        return { render };
+      })();
+
+      /* ============================================================
+         EXPOSE TO WINDOW
+         ============================================================ */
+      Object.assign(window, {
+        App, Store, Cart, Checkout, Modal, Toast, Utils,
+        Auth, DataStore, StatusBadge,
+        Dashboard, Overview, Orders, ProductsAdmin, Inventory,
+        Customers, Reviews, ReviewsAdmin, Sales, Staff, Settings, Account
+      });
+
+      /* ============================================================
+         BOOTSTRAP
+         ============================================================ */
+      (async function bootstrap() {
+        try {
+          await Auth.init();
+          await Promise.all([
+            DataStore.loadProducts(),
+            DataStore.loadReviews(),
+            DataStore.loadOrders(),
+            DataStore.loadCustomers()
+          ]);
+        } catch (err) {
+          console.error('Load failed:', err);
+          Toast.show('Could not load data. Check Firestore rules and internet.');
+        }
+        Store.renderProducts();
+        Reviews.renderHome();
+        Cart.updateCount();
+      })();
+    }
+
+    // Wait for Firebase
+    if (window.Firebase) bootApp();
+    else window.addEventListener('firebase-ready', bootApp, { once: true });
+  </script>
+</body>
+</html>
